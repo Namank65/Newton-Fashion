@@ -38,6 +38,7 @@
 }
 
 .nav-menu li {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +46,13 @@
   gap: 10px;
   cursor: pointer;
 }
+
+.nav-menu li:hover{
+  background: #ffc0cb;
+  padding: 4px;
+  border-radius: 10px;
+  color: white;
+} 
 
 .nav-login-cart {
   display: flex;
@@ -94,5 +102,3 @@
   background: red;
   color: white;
 }
-
-/* navBar Css-----------------*/
