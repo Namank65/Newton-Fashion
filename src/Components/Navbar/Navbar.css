@@ -47,12 +47,10 @@
   cursor: pointer;
 }
 
-.nav-menu li:hover{
-  background: #ffc0cb;
-  padding: 4px;
-  border-radius: 10px;
-  color: white;
+.nav-menu li span:hover{
+  color: rgb(255, 9, 9);
 } 
+
 
 .nav-login-cart {
   display: flex;
@@ -75,6 +73,9 @@
   font-weight: 500;
   background: white;
   cursor: pointer;
+}
+.nav-login-cart:hover button{
+  color: red;
 }
 
 .nav-login-cart button:active {
