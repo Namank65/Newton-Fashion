@@ -48,7 +48,7 @@
 }
 
 .nav-menu li span:hover{
-  color: rgb(255, 9, 9);
+  color: #20bdff;
 } 
 
 
@@ -75,7 +75,7 @@
   cursor: pointer;
 }
 .nav-login-cart:hover button{
-  color: red;
+  color: #20bdff
 }
 
 .nav-login-cart button:active {
