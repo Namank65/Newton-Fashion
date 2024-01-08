@@ -10,23 +10,22 @@ const Hero = () => {
       <div className="hero-left">
         <h2>NEW ARRIVALS ONLY</h2>
         <div>
-            <div className="Hero-Hand-Icon">
-                <p>New</p>
-                <img src={handIcon} alt="hero" />
-            </div>
-            <p>Collections</p>
-            <p>For Every One</p>
+          <div className="Hero-Hand-Icon">
+            <p>New</p>
+            <img src={handIcon} alt="hero" />
+          </div>
+          <p>Collections</p>
+          <p>For Every One</p>
         </div>
         <div className="hero-latest-btn">
-            <div>Latest Collection</div>
-            <img src={arrowIcon} alt="arrow" />
+          <div>Latest Collection</div>
+          <img src={arrowIcon} alt="arrow" />
         </div>
       </div>
 
       <div className="hero-right">
-            <img src={heroImage} alt="heroImg" />
+        <img src={heroImage} alt="heroImg" />
       </div>
-
     </div>
   );
 };
