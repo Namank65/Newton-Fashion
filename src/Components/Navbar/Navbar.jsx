@@ -64,9 +64,11 @@ const Navbar = () => {
         <Link to={"/login"}>
           <button>Login</button>
         </Link>
+
         <Link to={"/cart"}>
           <img src={cart_icon} alt="CartIcon" />
         </Link>
+
         <div className="nav-cart-count">0</div>
       </div>
     </div>
