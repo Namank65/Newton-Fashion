@@ -20,12 +20,14 @@
     font-size: 80px;
     font-weight: 600;
 }
+
 .offers-left p {
     color: #171717;
     font-size: 22px;
     font-weight: 600;
 }
-.offers-left button{
+
+.offers-left button {
     width: 282px;
     height: 70px;
     border-radius: 35px;
@@ -37,11 +39,9 @@
     margin-top: 30px;
     cursor: pointer;
 }
-.offers-right{
-    /* flex: 1; */
+
+.offers-right {
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
     padding-top: 50px;
-
 }
