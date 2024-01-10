@@ -11,6 +11,18 @@
     gap: 20px;
     padding-left: 180px;
     line-height: 1.1;
+    animation: SlideFromLeft ease 1s forwards;
+    opacity: 0;
+}
+@keyframes SlideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 .hero-left h2{
     color: #090909;
