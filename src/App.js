@@ -6,6 +6,9 @@ import Cart from './Pages/Cart';
 import LoginSignup from './Pages/LoginSignup';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from './Components/Footer/Footer';
+import men_banner from './Components/Assets/banner_mens.png';
+import women_banner from './Components/Assets/banner_women.png';
+import kid_banner from './Components/Assets/banner_kids.png';
 
 
 function App() {
@@ -15,9 +18,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Shop />} />
-          <Route path='/mens' element={<ShopCatogery />} catogery="men" />
-          <Route path='/womens' element={<ShopCatogery />} catogery="women" />
-          <Route path='/kids' element={<ShopCatogery />} catogery="kid" />
+          <Route path='/mens' element={<ShopCatogery catogery="men" banner={men_banner} />} />
+          <Route path='/womens' element={<ShopCatogery catogery="women" banner={women_banner} />} />
+          <Route path='/kids' element={<ShopCatogery catogery="kid" banner={kid_banner} />} />
           <Route path='/product' element={<Product />}>
             <Route path=':productId' element={<Product />} />
           </Route>
