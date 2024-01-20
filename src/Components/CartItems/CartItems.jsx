@@ -13,6 +13,16 @@ const CartItems = () => {
             <p>Total</p>
             <p>Remove</p>
         </div>
+        <hr />
+        <div>
+            <div className="cartItems-Formate">
+                <img src="" alt="" className='cartIcon-product-icon' />
+                <p></p>
+                <p></p>
+                <button className='cartItems-quantity'></button>
+                <p></p>
+            </div>
+        </div>
 
     </div>
   )
