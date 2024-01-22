@@ -27,12 +27,13 @@ const CartItems = () => {
                   className="cartIcon-product-icon"
                 />
                 <p>{e.name}</p>
-                <p>{e.new_price}</p>
+                <p>${e.new_price}</p>
                 <button className="cartItems-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>{e.new_price * cartItems[e.id]}</p>
-                <img className="cartItems-remove-icon"
+                <p>${e.new_price * cartItems[e.id]}</p>
+                <img
+                  className="cartItems-remove-icon"
                   src={remove_icon}
                   onClick={() => {
                     removefromCart(e.id);
@@ -44,7 +45,38 @@ const CartItems = () => {
             </div>
           );
         }
+        return null;
       })}
+
+      <div className="cartItems-down">
+        <div className="cartItems-total">
+          <h1>Cart Total</h1>
+          <div>
+            <div className="cartItems-total-item">
+              <p>Subtital</p>
+              <p>${0}</p>
+            </div>
+            <hr />
+            <div className="cartItems-total-item">
+              <p>Shipping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cartItems-total-item">
+              <h3>Total</h3>
+              <h3>${0}</h3>
+            </div>
+          </div>
+          <button>PROCEED TO CHECKOUT</button>
+        </div>
+        <div className="cartItems-promoCode">
+          <p>If You Have A Promocode, Enter Here</p>
+          <div className="cartItems-promobox">
+            <input type="text" placeholder="Promo Code" />
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
