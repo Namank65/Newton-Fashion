@@ -103,6 +103,10 @@
   color: white;
 }
 
+.nav-dropDown {
+  display: none;
+}
+
 @media(max-width:1280px) {
   .navbar {
     padding: 12px 50px;
@@ -161,5 +165,34 @@
   .nav-cart-count {
     width: 18px;
     height: 18pxpx;
+  }
+}
+
+@media(max-width:800px) {
+  .navbar {
+    padding: 10px 0px;
+  }
+
+  .nav-dropDown {
+    display: block;
+    width: 30px;
+    /* height: 10px; */
+    rotate: -90deg;
+    transition: 0.5s;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 5px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  }
+  .nav-menu{
+    display: none;
+    height: 80px;
+    width: 100px;
+    position: absolute;
+    background-color: white;
+    justify-content: center;
+    top: 50px;
   }
 }
