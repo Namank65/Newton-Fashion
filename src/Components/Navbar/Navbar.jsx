@@ -11,9 +11,7 @@ const Navbar = () => {
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
 
-const dropDownToggle = () => {
-  
-}
+  const dropDownToggle = () => {};
 
   return (
     <div className="navbar">
