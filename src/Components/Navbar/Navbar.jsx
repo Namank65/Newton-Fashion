@@ -23,14 +23,14 @@ const Navbar = () => {
         <p>NuBî Fashîon</p>
       </div>
 
-      {/* <div className="drop-down"> */}
+      <div className="drop-down">
         <img
           className="nav-dropDown"
           onClick={dropDownToggle}
           src={nav_dropDown}
           alt="dropDown"
         />
-      {/* </div> */}
+      </div>
 
       <ul ref={menuRef} className="nav-menu">
         <li
