@@ -197,4 +197,7 @@
   .nav-menu-visible {
     display: flex;
   }
+  .nav-dropDown.open{
+    transform: rotate(90deg);
+  }
 }
