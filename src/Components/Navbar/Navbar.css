@@ -185,13 +185,12 @@
 
   .nav-menu {
     display: none;
-    height: 75px;
+    height: 45px;
     width: 100%;
     position: absolute;
     background-color: white;
     justify-content: center;
-    top: 72px;
-    margin-bottom: 60px;
+    top: 69px;
   }
 
   .nav-menu-visible {
@@ -199,5 +198,23 @@
   }
   .nav-dropDown.open{
     transform: rotate(90deg);
+    cursor: pointer;
+  }
+}
+
+@media(max-width:500px){
+  .navbar{
+    width: 8px 0px;
+    gap: 0;
+  }
+  .logoimg{
+    transform: scale(0.8);
+  }
+  .nav-menu{
+    height: 50px;
+    top: 66px;
+  }
+  .nav-login-cart{
+    transform: scale(0.8);
   }
 }
