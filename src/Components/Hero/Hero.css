@@ -3,6 +3,7 @@
   background: linear-gradient(180deg, #20bdff, #fefefe);
   display: flex;
 }
+
 .hero-left {
   flex: 1;
   display: flex;
@@ -14,34 +15,41 @@
   animation: SlideFromLeft ease 1s forwards;
   opacity: 0;
 }
+
 @keyframes SlideFromLeft {
   0% {
     opacity: 0;
     transform: translateX(-100%);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
 .hero-left h2 {
   color: #090909;
   font-size: 26px;
   font-weight: 600;
 }
+
 .hero-left p {
   color: #171717;
   font-size: 100px;
   font-weight: 700;
 }
+
 .Hero-Hand-Icon {
   display: flex;
   align-items: center;
   gap: 20px;
 }
+
 .Hero-Hand-Icon img {
   width: 105px;
 }
+
 .hero-latest-btn {
   display: flex;
   justify-content: center;
@@ -56,9 +64,25 @@
   font-size: 22px;
   font-weight: 500;
 }
+
 .hero-right {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media(max-width:1280px){
+  .hero-left{
+    padding-left: 100px;
+  }
+  .hero-left h2{
+    font-size: 22px;
+  }
+  .hero-left p{
+    font-size: 60px;
+  }
+  .Hero-Hand-Icon img{
+    width: 80px;
+  }
 }
