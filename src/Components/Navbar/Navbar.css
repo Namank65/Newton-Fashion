@@ -196,25 +196,29 @@
   .nav-menu-visible {
     display: flex;
   }
-  .nav-dropDown.open{
+
+  .nav-dropDown.open {
     transform: rotate(90deg);
     cursor: pointer;
   }
 }
 
-@media(max-width:500px){
-  .navbar{
+@media(max-width:500px) {
+  .navbar {
     width: 8px 0px;
     gap: 0;
   }
-  .logoimg{
+
+  .logoimg {
     transform: scale(0.8);
   }
-  .nav-menu{
+
+  .nav-menu {
     height: 50px;
     top: 66px;
   }
-  .nav-login-cart{
+
+  .nav-login-cart {
     transform: scale(0.8);
   }
 }
