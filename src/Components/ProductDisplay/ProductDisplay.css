@@ -230,7 +230,7 @@
     align-items: center;
   }
 
-  .ProductDisplay-img-list{
+  .ProductDisplay-img-list {
     flex-direction: row;
     gap: 6px;
   }
@@ -252,9 +252,10 @@
   }
 
   .ProductDisplay-right-description {
-    font: 10px;
+    font-size: 10px;
   }
-  .ProductDisplay-right-size h1{
+
+  .ProductDisplay-right-size h1 {
     margin-top: 10px 0px;
   }
 
@@ -265,8 +266,9 @@
 
 
   .ProductDisplay-right-size div {
-    padding: 4px 11px;
+    padding: 4px 0px;
   }
+
   .ProductDisplay-right button {
     width: 100px;
     font-size: 12px;
@@ -277,50 +279,70 @@
   }
 }
 
-@media(max-width:500px){
-  .ProductDisplay{
+@media(max-width:500px) {
+  .ProductDisplay {
     flex-direction: column;
   }
-  .ProductDisplay-left{
+
+  .ProductDisplay-left {
     gap: 10px;
     flex-direction: row;
     margin: auto;
   }
-  .ProductDisplay-img-list{
+
+  .ProductDisplay-img-list {
     flex-direction: column;
     gap: 8px;
   }
-  .ProductDisplay-img-list img{
+
+  .ProductDisplay-img-list img {
     height: 75px;
   }
-  .ProductDisplay-main-img{
+
+  .ProductDisplay-main-img {
     height: 330px;
   }
-  .ProductDisplay-right{
+
+  .ProductDisplay-right {
     margin: 5px;
   }
-  .ProductDisplay-right h1{
+
+  .ProductDisplay-right h1 {
     margin-top: 15px;
     font-size: 20px;
     font-weight: 500;
   }
-  .ProductDisplay-right-stars img{
+
+  .ProductDisplay-right-stars img {
     width: 15px;
   }
-  .ProductDisplay-right-sizes{
+
+  .ProductDisplay-right-sizes {
     gap: 10px;
     margin: 20px 0px;
   }
-  .ProductDisplay-right-sizes div{
+
+  .ProductDisplay-right-sizes div {
     padding: 10px 16px;
     font-size: 14px;
   }
-  .ProductDisplay-right button{
+
+  .ProductDisplay-right button {
     width: 130px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 12px 0px;
   }
-  .ProductDisplay-right-category{
-    font-size: 16px;
+
+  .ProductDisplay-right-category {
+    font-size: 12px;
+  }
+
+  .ProductDisplay-right-prices {
+    margin: 20px 0px;
+    font-size: 20px;
+  }
+
+  .ProductDisplay-right-size {
+    margin-top: 0px;
   }
 }
