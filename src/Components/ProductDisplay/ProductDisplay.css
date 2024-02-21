@@ -151,9 +151,9 @@
     font-size: 20px;
   }
 
-  .ProductDisplay-right-size div {
-    /* padding: 10px 15px; */
-  }
+  /* .ProductDisplay-right-size div {
+    padding: 10px 15px;
+  } */
 
   .ProductDisplay-right button {
     width: 150px;
@@ -165,12 +165,14 @@
     margin-top: 5px;
     font-size: 14px;
   }
-  .ProductDisplay-right-sizes{
+
+  .ProductDisplay-right-sizes {
     margin: 10px 0px;
     padding: 10px 0px;
     gap: 10px;
   }
-  .ProductDisplay-right-size{
+
+  .ProductDisplay-right-size {
     margin-top: 20px;
   }
 }
@@ -278,6 +280,7 @@
   .ProductDisplay-right-category {
     font-size: 10px;
   }
+
   .ProductDisplay-right-sizes {
     margin: 10px 0px;
   }
