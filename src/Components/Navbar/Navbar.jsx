@@ -90,6 +90,7 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
+      <button className="aiBtn">AI Suggestions</button>
     </div>
   );
 };
