@@ -5,11 +5,19 @@ import cart_icon from "../Assets/cart_icon.png";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import nav_dropDown from "../Assets/dropdown_icon.png";
+import { useDispatch } from "react-redux";
+import { toggleAiSearch } from "../../utils/AiCompSlice";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
+
+  const dispatch = useDispatch();
+
+  const handelClickAi = () => {
+    dispatch(toggleAiSearch())
+  }
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -90,7 +98,7 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button className="aiBtn">AI Suggestions</button>
+      <button onClick={handelClickAi} className="aiBtn">AI Suggestions</button>
     </div>
   );
 };

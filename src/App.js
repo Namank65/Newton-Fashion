@@ -9,6 +9,7 @@ import Footer from './Components/Footer/Footer';
 import men_banner from './Components/Assets/banner_mens.png';
 import women_banner from './Components/Assets/banner_women.png';
 import kid_banner from './Components/Assets/banner_kids.png';
+import AiComp from './Components/AiComponent/AiComp';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+        <AiComp/>
         <Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
