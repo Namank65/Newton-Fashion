@@ -10,15 +10,17 @@ import men_banner from './Components/Assets/banner_mens.png';
 import women_banner from './Components/Assets/banner_women.png';
 import kid_banner from './Components/Assets/banner_kids.png';
 import AiComp from './Components/AiComponent/AiComp';
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const showAiSearch = useSelector((store) => store.ai.showAiSearch);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <AiComp/>
-        <Routes>
+        {showAiSearch? (<AiComp/>) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
           <Route path='/womens' element={<ShopCatogery category="women" banner={women_banner} />} />
@@ -28,7 +30,8 @@ function App() {
           </Route>
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
-        </Routes>
+        </Routes>) }
+        
         <Footer />
       </BrowserRouter>
     </div>
