@@ -1,8 +1,14 @@
 import React from 'react';
+import AiSearchBar from './AiSearchBar';
+import AiSearchSuggestion from './AiSearchSuggestion';
+import "./AiComp.css";
 
 const AiComp = () => {
   return (
-    <div>AiComp</div>
+    <div>
+      <AiSearchBar/>
+      <AiSearchSuggestion/>
+    </div>
   )
 }
 

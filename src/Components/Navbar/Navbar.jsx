@@ -98,7 +98,7 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button onClick={handelClickAi} className="aiBtn">AI Suggestions</button>
+      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">AI Suggestions</button>
     </div>
   );
 };
