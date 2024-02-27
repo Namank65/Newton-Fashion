@@ -5,7 +5,7 @@ import "./AiComp.css";
 
 const AiComp = () => {
   return (
-    <div>
+    <div className='AiComp'>
       <AiSearchBar/>
       <AiSearchSuggestion/>
     </div>

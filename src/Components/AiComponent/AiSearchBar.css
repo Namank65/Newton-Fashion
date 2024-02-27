@@ -1,0 +1,28 @@
+.AiSearch form {
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.AiInput {
+    width: 40%;
+    padding: 15px;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border: none;
+    outline: none;
+    font-family: Poppins;
+    font-size: 16px;
+}
+
+.AiBtn {
+    padding: 15px;
+    width: 210px;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
