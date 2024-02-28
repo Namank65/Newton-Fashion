@@ -10,13 +10,15 @@ import { toggleAiSearch } from "../../utils/AiCompSlice";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const [aiBtn, setAiBtn] = useState("AI Suggestions");
   const { getTotalCartItems } = useContext(ShopContext);
   const menuRef = useRef();
 
   const dispatch = useDispatch();
 
   const handelClickAi = () => {
-    dispatch(toggleAiSearch())
+    dispatch(toggleAiSearch());
+    aiBtn === "AI Suggestions" ? setAiBtn("Home") : setAiBtn("AI Suggestions");
   }
 
   const dropDownToggle = (e) => {
@@ -51,7 +53,6 @@ const Navbar = () => {
           </Link>
           {menu === "shop" ? <hr /> : <></>}
         </li>
-        {/* <li>Shop</li> */}
 
         <li
           onClick={() => {
@@ -98,7 +99,7 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">AI Suggestions</button>
+      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">{aiBtn}</button>
     </div>
   );
 };
