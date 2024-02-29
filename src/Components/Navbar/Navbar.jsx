@@ -19,7 +19,7 @@ const Navbar = () => {
   const handelClickAi = () => {
     dispatch(toggleAiSearch());
     aiBtn === "AI Suggestions" ? setAiBtn("Home") : setAiBtn("AI Suggestions");
-  }
+  };
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -99,7 +99,9 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">{aiBtn}</button>
+      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">
+        {aiBtn}
+      </button>
     </div>
   );
 };
