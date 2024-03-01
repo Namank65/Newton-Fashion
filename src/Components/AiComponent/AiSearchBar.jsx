@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./AiSearchBar.css";
+import openai from "../../utils/openAiConfig";
 
 const AiSearchBar = () => {
+  const searchText = useRef(null);
+  
+  const handelClickGptSearch = async() => {
+    console.log(searchText.current.value);
+
+    const gptResults = await openai.chat.completions.create({
+      messages: [{ role: 'user', content: searchText.current.value }],
+      model: 'gpt-3.5-turbo',
+    });
+    console.log(gptResults.choices);
+  }
+
   return (
     <div>
       <div className="AiSearch">
         <form onSubmit={(e) => e.preventDefault()}>
-          <input className="AiInput" type="text" placeholder="What would you like to wear Today?" />
-          <button className="AiBtn">Search</button>
+          <input ref={searchText} className="AiInput" type="text" placeholder="What would you like to wear Today?" />
+          <button className="AiBtn" onClick={handelClickGptSearch}>Search</button>
         </form>
       </div>
     </div>
