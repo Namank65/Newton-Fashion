@@ -8,8 +8,10 @@ const AiSearchBar = () => {
   const handelClickGptSearch = async() => {
     console.log(searchText.current.value);
 
+    const AiQuery = `Act as a cloth recommendation system and suggest some cloths for the query : ${searchText.current.value}`
+
     const gptResults = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: searchText.current.value }],
+      messages: [{ role: 'user', content: AiQuery }],
       model: 'gpt-3.5-turbo',
     });
     console.log(gptResults.choices);
