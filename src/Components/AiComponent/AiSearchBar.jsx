@@ -8,7 +8,7 @@ const AiSearchBar = () => {
   const handelClickGptSearch = async() => {
     console.log(searchText.current.value);
 
-    const AiQuery = `Act as a cloth recommendation system and suggest some cloths for the query : ${searchText.current.value}`
+    const AiQuery = `Act as a cloth recommendation system and suggest some cloths for the query : ${searchText.current.value} only give me 5 names of cloths, comma seprated like the expample result given ahead. example result: jacket, sweater, t-shirt, pajama, jeans`
 
     const gptResults = await openai.chat.completions.create({
       messages: [{ role: 'user', content: AiQuery }],
