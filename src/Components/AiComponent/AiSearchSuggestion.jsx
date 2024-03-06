@@ -2,14 +2,15 @@ import React from 'react';
 import { useSelector } from "react-redux";
 
 const AiSearchSuggestion = () => {
+ 
+  const {clothpic, clothNames} = useSelector((store) => store.ai);
 
-  const ai = useSelector((store) => store.ai);
-  console.log(ai)
-
-  // const {clothpic, clothNames} = ai;
 
   return (
-    <div>AiSearchSuggestion</div>
+    <div>
+      <img src={clothpic} alt="" />
+      <h1>{clothNames}</h1>
+    </div>
   )
 }
 

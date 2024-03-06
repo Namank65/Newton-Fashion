@@ -15,7 +15,8 @@ const AiSearchBar = () => {
     );
 
     const json = await data.json();
-    return json.results;
+    // console.log(json.results?.[0]?.urls?.small)
+    return json.results?.[0]?.urls?.small;
   };
 
   const handelClickGptSearch = async () => {
