@@ -1,6 +1,7 @@
 .AiSearch form {
     display: flex;
     height: 500px;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -25,4 +26,8 @@
     color: white;
     font-size: 16px;
     cursor: pointer;
+}
+
+.aiHeadding{
+    color: #fff;
 }

@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 import { useSelector } from "react-redux";
+import "./AiSearchSuggestion.css";
 
 const AiSearchSuggestion = () => {
- 
-  const {clothpic, clothNames} = useSelector((store) => store.ai);
-
+  const { clothpic, clothNames } = useSelector((store) => store.ai);
 
   return (
     <div>
-      <img src={clothpic} alt="" />
-      <h1>{clothNames}</h1>
+      <div className="aiSuggestion">
+        <h1 className="aiTitle">{clothNames}</h1>
+        <img className="aiImg" src={clothpic} alt="aiImg" />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default AiSearchSuggestion;

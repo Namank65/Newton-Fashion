@@ -44,15 +44,18 @@ const AiSearchBar = () => {
     <div>
       <div className="AiSearch">
         <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            ref={searchText}
-            className="AiInput"
-            type="text"
-            placeholder="What would you like to wear Today?"
-          />
-          <button className="AiBtn" onClick={handelClickGptSearch}>
-            Search
-          </button>
+          <h1 className="aiHeadding">Ai Search</h1>
+          <div>
+            <input
+              ref={searchText}
+              className="AiInput"
+              type="text"
+              placeholder="What would you like to wear Today?"
+            />
+            <button className="AiBtn" onClick={handelClickGptSearch}>
+              Search
+            </button>
+          </div>
         </form>
       </div>
     </div>
