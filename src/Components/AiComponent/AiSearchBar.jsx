@@ -44,7 +44,7 @@ const AiSearchBar = () => {
       <div className="AiSearch">
         <form onSubmit={(e) => e.preventDefault()}>
           <h1 className="aiHeadding">Ai Search</h1>
-          <div className="aiInput">
+          <div className="aiInputAndBtn">
             <input
               ref={searchText}
               className="AiInput"
