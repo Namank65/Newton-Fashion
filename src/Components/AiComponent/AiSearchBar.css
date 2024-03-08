@@ -1,3 +1,7 @@
+.AiSearch{
+    width: 50%;
+}
+
 .AiSearch form {
     display: flex;
     height: 500px;
@@ -7,7 +11,7 @@
 }
 
 .AiInput {
-    width: 40%;
+    width: 100%;
     padding: 15px;
     border-top-right-radius: 80px;
     border-bottom-left-radius: 80px;
@@ -28,6 +32,11 @@
     cursor: pointer;
 }
 
+.aiInput{
+    /* width: 500px; */
+}
+
 .aiHeadding{
     color: #fff;
+    margin-bottom: 35px;
 }

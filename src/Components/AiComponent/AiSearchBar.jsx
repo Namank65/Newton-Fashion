@@ -15,7 +15,6 @@ const AiSearchBar = () => {
     );
 
     const json = await data.json();
-    // console.log(json.results?.[0]?.urls?.small)
     return json.results?.[0]?.urls?.small;
   };
 
@@ -45,7 +44,7 @@ const AiSearchBar = () => {
       <div className="AiSearch">
         <form onSubmit={(e) => e.preventDefault()}>
           <h1 className="aiHeadding">Ai Search</h1>
-          <div>
+          <div className="aiInput">
             <input
               ref={searchText}
               className="AiInput"
