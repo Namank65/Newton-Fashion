@@ -15,6 +15,7 @@ const AiSearchBar = () => {
     );
 
     const json = await data.json();
+    console.log(json.results?.[0]?.urls?.small)
     return json.results?.[0]?.urls?.small;
   };
 
