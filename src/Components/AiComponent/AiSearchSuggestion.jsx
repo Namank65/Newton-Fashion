@@ -10,8 +10,12 @@ const AiSearchSuggestion = () => {
   return (
     <div>
       <div className="aiSuggestion">
-        {clothNames.map(names => <h1 className="aiTitle">{names}</h1>)}
-        {clothpic.map(img => <img className="aiImg" src={img} alt="aiImg" />)}
+        {clothNames.map((names) => (
+          <h1 className="aiTitle">{names}</h1>
+        ))}
+        {clothpic.map((img) => (
+          <img className="aiImg" src={img} alt="aiImg" />
+        ))}
       </div>
     </div>
   );
