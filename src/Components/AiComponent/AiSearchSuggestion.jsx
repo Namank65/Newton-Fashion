@@ -1,6 +1,7 @@
 import React from "react";
 import "./AiSearchSuggestion.css";
 import { useSelector } from "react-redux";
+import AiResult from "./AiResult";
 
 const AiSearchSuggestion = () => {
   const { clothpic, clothNames } = useSelector((store) => store.ai);
@@ -10,14 +11,9 @@ const AiSearchSuggestion = () => {
   return (
     <div>
       <div className="aiSuggestion">
-        {clothNames.map((name, index) => (
-          <h1 key={index} className="aiTitle">
-            {name}
-          </h1>
-        ))}
-        {clothpic.map((img, index) => (
-          <img key={index} className="aiImg" src={img} alt="aiImg" />
-        ))}
+        {
+          clothNames.map((cltname, index) => <AiResult name={cltname} pic={clothpic[index]} />)
+        }
       </div>
     </div>
   );
