@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        {showAiSearch? (<AiComp/>) : (<Routes>
+        {showAiSearch ? (<AiComp />) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
           <Route path='/womens' element={<ShopCatogery category="women" banner={women_banner} />} />
@@ -30,8 +30,8 @@ function App() {
           </Route>
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
-        </Routes>) }
-        
+        </Routes>)}
+
         <Footer />
       </BrowserRouter>
     </div>
