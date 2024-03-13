@@ -12,7 +12,7 @@ const AiSearchSuggestion = () => {
     <div>
       <div className="aiSuggestion">
         {
-          clothNames.map((cltname, index) => <AiResult name={cltname} pic={clothpic[index]} />)
+          clothNames.map((cltname, index) => <AiResult key={cltname} name={cltname} pic={clothpic[index]} />)
         }
       </div>
     </div>
