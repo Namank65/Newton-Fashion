@@ -1,3 +1,17 @@
+.AiResult{
+    width: 300px;
+    height: 400px;
+}
 .AiTitle{
-    
+    color: white;
+}
+
+.AiPic{
+    width: 250px;
+    height: 250px;
+}
+
+.AiTitleAndPic{
+    display: grid;
+    grid-template-columns: auto auto auto ;
 }

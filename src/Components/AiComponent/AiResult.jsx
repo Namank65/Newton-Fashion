@@ -1,4 +1,5 @@
 import React from "react";
+import "./AiResult.css";
 
 const AiResult = ({ name, pic }) => {
   if (!(pic && name)) return null;
@@ -6,8 +7,10 @@ const AiResult = ({ name, pic }) => {
   return (
     <div>
       <div className="AiResult">
-        <h1 className="AiTitle">{name}</h1>
-        <img className="AiPic" src={pic} alt="AiPic" />
+        <div className="AiTitleAndPic">
+          <h2 className="AiTitle">{name}</h2>
+          <img className="AiPic" src={pic} alt="AiPic" />
+        </div>
       </div>
     </div>
   );
