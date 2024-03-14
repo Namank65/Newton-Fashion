@@ -4,6 +4,4 @@ export const OPENAI_KEY = "";
 
 
 
-
-const number1 = sk-hzUezeayIFJlA8rJSEc4T3Blb     
-  const number2 =    kFJZcv57nHaMzUiY0KqJfwZ
+//sk-hzUezeayIFJlA8rJSEc4T3Blb kFJZcv57nHaMzUiY0KqJfwZ

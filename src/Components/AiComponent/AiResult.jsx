@@ -7,10 +7,9 @@ const AiResult = ({ name, pic }) => {
   return (
     <div>
       <div className="AiResult">
-        <div className="AiTitleAndPic">
           <h2 className="AiTitle">{name}</h2>
           <img className="AiPic" src={pic} alt="AiPic" />
-        </div>
+
       </div>
     </div>
   );

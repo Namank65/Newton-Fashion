@@ -1,14 +1,6 @@
-.aiSuggestion{
-    
-    /* display: flex; */
-    /* flex-direction: row; */
-   margin-bottom: 50px;
-}
-
-.aiTitle{
-    width: 500px;
-}
-
-.aiImg{
-    width: 250px;
+.aiSuggestion {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 25px;
+    margin-bottom: 50px;
 }
