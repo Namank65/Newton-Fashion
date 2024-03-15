@@ -10,10 +10,16 @@ const AiSearchSuggestion = () => {
 
   return (
     <div>
-      <div className="aiSuggestion">
-        {
-          clothNames.map((cltname, index) => <AiResult key={cltname} name={cltname.toUpperCase()} pic={clothpic[index]} />)
-        }
+      <div className="suggestionParent">
+        <div className="aiSuggestion">
+          {clothNames.map((cltname, index) => (
+            <AiResult
+              key={cltname}
+              name={cltname.toUpperCase()}
+              pic={clothpic[index]}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

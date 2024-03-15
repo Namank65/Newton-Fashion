@@ -1,9 +1,15 @@
+.AiResult{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .AiTitle{
     color: white;
-    /* width: 25px; */
 }
 
 .AiPic{
+    border-radius: 10px;
     width: 260px;
     height: 260px;
 }

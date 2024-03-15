@@ -9,7 +9,6 @@ const AiResult = ({ name, pic }) => {
       <div className="AiResult">
           <h2 className="AiTitle">{name}</h2>
           <img className="AiPic" src={pic} alt="AiPic" />
-
       </div>
     </div>
   );

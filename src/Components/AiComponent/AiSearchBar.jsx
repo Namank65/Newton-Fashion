@@ -11,7 +11,7 @@ const AiSearchBar = () => {
 
   const searchClothsUnsplach = async (cloth) => {
     const data = await fetch(
-      `https://api.unsplash.com/search/photos?page=1&query=${cloth}&client_id=${UNSPLACH_KEY}&per_page=5`
+      `https://api.unsplash.com/search/photos?page=1&query=${cloth}&client_id=${UNSPLACH_KEY}&per_page=10`
     );
 
     const json = await data.json();
@@ -20,7 +20,7 @@ const AiSearchBar = () => {
   };
 
   const handelClickGptSearch = async () => {
-    const AiQuery = `Act as a cloth recommendation system and suggest some cloths for the query : ${searchText.current.value} only give me 5 names of cloths, comma seprated like the expample result given ahead. example result: jacket, sweater, t-shirt, pajama, jeans`;
+    const AiQuery = `Act as a cloth recommendation system and suggest some cloths for the query : ${searchText.current.value} only give me 10 names of cloths, comma seprated like the expample result given ahead. example result: jacket, sweater, t-shirt, pajama, jeans`;
 
     const gptResults = await openai.chat.completions.create({
       messages: [{ role: "user", content: AiQuery }],

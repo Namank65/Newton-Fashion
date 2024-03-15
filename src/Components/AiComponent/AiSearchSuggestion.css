@@ -1,6 +1,12 @@
+.suggestionParent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .aiSuggestion {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 25px;
+    row-gap: 60px;
     margin-bottom: 50px;
 }
