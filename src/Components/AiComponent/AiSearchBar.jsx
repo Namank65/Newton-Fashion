@@ -15,7 +15,7 @@ const AiSearchBar = () => {
     );
 
     const json = await data.json();
-    console.log(json.results?.[0]?.urls?.small)
+    console.log(json.results?.[0]?.urls?.small);
     return json.results?.[0]?.urls?.small;
   };
 
@@ -44,17 +44,19 @@ const AiSearchBar = () => {
     <div>
       <div className="AiSearch">
         <form onSubmit={(e) => e.preventDefault()}>
-          <h1 className="aiHeadding">AI SEARCH</h1>
           <div className="aiInputAndBtn">
-            <input
-              ref={searchText}
-              className="AiInput"
-              type="text"
-              placeholder="What would you like to wear Today?"
-            />
-            <button className="AiBtn" onClick={handelClickGptSearch}>
-              Search
-            </button>
+            <h1 className="aiHeadding">AI SEARCH</h1>
+            <div className="childInputBtn">
+              <input
+                ref={searchText}
+                className="AiInput"
+                type="text"
+                placeholder="What would you like to wear Today?"
+              />
+              <button className="AiBtn" onClick={handelClickGptSearch}>
+                Search
+              </button>
+            </div>
           </div>
         </form>
       </div>
