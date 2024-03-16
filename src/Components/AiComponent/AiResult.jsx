@@ -7,7 +7,7 @@ const AiResult = ({ name, pic }) => {
   return (
     <div>
       <div className="AiResult">
-          <h2 className="AiTitle">{name}</h2>
+          <h3 className="AiTitle">{name}</h3>
           <img className="AiPic" src={pic} alt="AiPic" />
       </div>
     </div>
