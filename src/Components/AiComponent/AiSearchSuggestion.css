@@ -29,6 +29,5 @@
 @media(max-width:500px){
     .aiSuggestion{
         grid-template-columns: repeat(1, 0.5fr);
-        /* to be continued */
     }
 }
