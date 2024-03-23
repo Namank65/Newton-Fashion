@@ -11,6 +11,11 @@
     margin-bottom: 50px;
 }
 
+.removeAiBtn{
+    width: 260px;
+    /* display: none; */
+}
+
 @media(max-width:1280px){
     .aiSuggestion{
         grid-template-columns: repeat(4, 0.8fr);

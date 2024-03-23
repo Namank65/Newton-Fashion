@@ -16,8 +16,9 @@ const AiCompSlice = createSlice({
       const { clothNames, clothpic } = action.payload;
       state.clothpic = clothpic;
       state.clothNames = clothNames;
-    },removeAiSearchResults: (state, action) => {
-      state.clothpic = []
+    },
+    removeAiSearchResults: (state) => {
+      state.clothpic.length = 0
     }
   },
 });
