@@ -5,6 +5,7 @@ import AiResult from "./AiResult";
 
 const AiSearchSuggestion = () => {
   const { clothpic, clothNames } = useSelector((store) => store.ai);
+  const {removeAiSearchResults} = useSelector((store) => store.ai);
 
   if (!(clothpic && clothNames)) return null;
 
@@ -12,6 +13,7 @@ const AiSearchSuggestion = () => {
     <div>
       <div className="suggestionParent">
         <div className="aiSuggestion">
+          <p onClick={removeAiSearchResults}>x</p>
           {clothNames.map((cltname, index) => (
             <AiResult
               key={cltname}

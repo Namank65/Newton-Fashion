@@ -20,7 +20,7 @@ const LoginSignup = () => {
         </div>
         <button>Continue</button>
         <p className="loginsignup-login">
-          {isRegistered ? "New To Nubi Fashion" : "Already Have An Account?"} <span onClick={RegisterHandelClick}>{isRegistered ? "Register" : "Login"}</span>
+          {isRegistered ? "New To Nubi Fashion?" : "Already Have An Account?"} <span onClick={RegisterHandelClick}>{isRegistered ? "Register Here " : "Login Here"}</span>
         </p>
         <div className="loginsignup-agree">
           <input type="checkbox" name="" id="" />
