@@ -8,19 +8,24 @@ const AiSearchSuggestion = () => {
   const { clothpic, clothNames } = useSelector((store) => store.ai);
   const [removeAiBtn, setRemoveAiBtn] = useState(false);
   const dispatch = useDispatch();
-  
+
   if (!(clothpic && clothNames)) return null;
 
-  
   const removeDataHandel = () => {
     dispatch(removeAiSearchResults());
-    setRemoveAiBtn(!removeAiBtn)
-  }
+    setRemoveAiBtn(!removeAiBtn);
+  };
 
   return (
     <div>
       <div className="suggestionParent">
-          <button style={{display: removeAiBtn? "none" : "block"}} className="removeAiBtn" onClick={removeDataHandel}>Remove</button>
+        <button
+          style={{ display: removeAiBtn ? "none" : "block" }}
+          className="removeAiBtn"
+          onClick={removeDataHandel}
+        >
+          Remove
+        </button>
         <div className="aiSuggestion">
           {clothNames.map((cltname, index) => (
             <AiResult
