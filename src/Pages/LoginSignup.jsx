@@ -8,10 +8,13 @@ const LoginSignup = () => {
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
   }
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div className="loginsignup">
-      <form onSubmit={(e) => e.preventDefault()} className="loginsignup-container">
+      <form onSubmit={SubmitHandler} className="loginsignup-container">
         <h1>{isRegistered ? "Login" : "Register"}</h1>
         <div className="loginsignup-fields">
           <input type="text" placeholder="User Name" />
