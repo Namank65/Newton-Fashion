@@ -11,6 +11,7 @@ import women_banner from './Components/Assets/banner_women.png';
 import kid_banner from './Components/Assets/banner_kids.png';
 import AiComp from './Components/AiComponent/AiComp';
 import { useSelector } from 'react-redux';
+import {Toaster} from "react-hot-toast"
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
-
+          <Toaster/>
         <Footer />
       </BrowserRouter>
     </div>
