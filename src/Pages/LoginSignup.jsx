@@ -14,6 +14,8 @@ const LoginSignup = () => {
   const SubmitHandler = async (e) => {
     e.preventDefault();
 
+    console.log(userName)
+
     try {
       const { data } = await axios.post(
         `${server}/users/register`,
@@ -31,8 +33,7 @@ const LoginSignup = () => {
       );
       toast.success(data.message)
     } catch (error) {
-      toast.error("Invalid UserName or Password")
-      console.log(error)
+      toast.error(error?.message)
     }
   };
 
