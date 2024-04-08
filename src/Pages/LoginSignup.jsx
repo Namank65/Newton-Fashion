@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CSS/LoginSignup.css";
-import { server } from "../index";
+import { server } from "../index.js";
 import axios from "axios";
 import toast from "react-hot-toast";
 
