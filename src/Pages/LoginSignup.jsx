@@ -14,8 +14,7 @@ const LoginSignup = () => {
   const SubmitHandler = async (e) => {
     e.preventDefault();
 
-    console.log(userName)
-
+    
     try {
       const { data } = await axios.post(
         `${server}/users/register`,
@@ -32,6 +31,7 @@ const LoginSignup = () => {
         }
       );
       toast.success(data.message)
+      console.log(data)
     } catch (error) {
       toast.error(error?.message)
     }
