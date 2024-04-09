@@ -7,11 +7,14 @@ import { ShopContext } from "../../Context/ShopContext";
 import nav_dropDown from "../Assets/dropdown_icon.png";
 import { useDispatch } from "react-redux";
 import { toggleAiSearch } from "../../utils/AiCompSlice";
+import { context } from "../../index";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const [aiBtn, setAiBtn] = useState("AI Suggestions");
   const { getTotalCartItems } = useContext(ShopContext);
+  const { isAuthenticated } = useContext(context);
+
   const menuRef = useRef();
 
   const dispatch = useDispatch();
@@ -89,9 +92,10 @@ const Navbar = () => {
       </ul>
 
       <div className="nav-login-cart">
-        <Link to={"/login"}>
+        {isAuthenticated? <button>logout</button> : <Link to={"/login"}>
           <button>Login</button>
-        </Link>
+        </Link>}
+        
 
         <Link to={"/cart"}>
           <img src={cart_icon} alt="CartIcon" />

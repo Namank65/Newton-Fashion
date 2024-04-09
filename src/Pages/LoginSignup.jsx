@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CSS/LoginSignup.css";
-import { server } from "../index.js";
+import { context, server } from "../index.js";
+import {Navigate} from "react-router-dom"
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
+  const { isAuthenticated, setIsAuthenticated } = useContext(context);
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,11 +33,15 @@ const LoginSignup = () => {
         }
       );
       toast.success(data.message)
+      setIsAuthenticated(true)
       console.log(data)
     } catch (error) {
       toast.error(error?.message)
+      setIsAuthenticated(true);
     }
   };
+
+  if(isAuthenticated) return <Navigate to={"/"}/>
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
