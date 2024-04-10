@@ -6,7 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const LoginSignup = () => {
-  const [isRegistered, setIsRegistered] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
 
   const [userName, setUserName] = useState("");
@@ -16,10 +16,9 @@ const LoginSignup = () => {
   const SubmitHandler = async (e) => {
     e.preventDefault();
 
-    
     try {
       const { data } = await axios.post(
-        `${server}/users/register`,
+        `${server}/users/${isRegistered ? 'login' : 'register'}`,
         {
           userName,
           email,
@@ -34,7 +33,7 @@ const LoginSignup = () => {
       );
       toast.success(data.message)
       setIsAuthenticated(true)
-      console.log(data)
+
     } catch (error) {
       toast.error(error?.message)
       setIsAuthenticated(true);
