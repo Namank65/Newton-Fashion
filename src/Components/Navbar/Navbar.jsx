@@ -33,12 +33,11 @@ const Navbar = () => {
         {withCredentials: true}
       );
       toast.success(data.message)
-      setIsAuthenticated(false)
+      setIsAuthenticated(true)
 
     } catch (error) {
-      console.log(error)
       toast.error(error?.message)
-      setIsAuthenticated(true);
+      setIsAuthenticated(false);
     }
   }
 

@@ -35,7 +35,7 @@ const LoginSignup = () => {
       setIsAuthenticated(true)
 
     } catch (error) {
-      toast.error("Invalid Username Or Password")
+      toast.error("Invalid User Credintials")
       setIsAuthenticated(false);
     }
   };
