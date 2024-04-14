@@ -28,16 +28,17 @@ const Navbar = () => {
 
   const logoOutHandler = async() => {
     try {
-        const {data} = await axios.get(
+        await axios.get(
         `${server}/users/logout`,
         {withCredentials: true}
       );
-      toast.success(data.message)
-      setIsAuthenticated(true)
+      toast.success("Logged Out Successfully")
+      setIsAuthenticated(false)
 
     } catch (error) {
-      toast.error(error?.message)
-      setIsAuthenticated(false);
+      console.log(error)
+      toast.error("Somthing Went Wrong")
+      setIsAuthenticated(true);
     }
   }
 

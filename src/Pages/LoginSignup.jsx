@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import "./CSS/LoginSignup.css";
 import { context, server } from "../index.js";
-import {Navigate} from "react-router-dom"
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const LoginSignup = () => {
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(true);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
 
   const [userName, setUserName] = useState("");
@@ -18,7 +18,7 @@ const LoginSignup = () => {
 
     try {
       const { data } = await axios.post(
-        `${server}/users/${isRegistered ? 'login' : 'register'}`,
+        `${server}/users/${isRegistered ? "login" : "register"}`,
         {
           userName,
           email,
@@ -31,16 +31,16 @@ const LoginSignup = () => {
           withCredentials: true,
         }
       );
-      toast.success(data.message)
-      setIsAuthenticated(true)
+      toast.success(data.message);
+      setIsAuthenticated(true);
 
     } catch (error) {
-      toast.error("Invalid User Credintials")
+      toast.error("Invalid User Credintials");
       setIsAuthenticated(false);
     }
   };
 
-  if(isAuthenticated) return <Navigate to={"/"}/>
+  if (isAuthenticated ) return <Navigate to={"/"} />;
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
