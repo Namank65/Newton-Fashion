@@ -8,7 +8,7 @@ import nav_dropDown from "../Assets/dropdown_icon.png";
 import { useDispatch } from "react-redux";
 import { toggleAiSearch } from "../../utils/AiCompSlice";
 import { context, server } from "../../index";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
 import axios from "axios";
 
 const Navbar = () => {
@@ -18,7 +18,6 @@ const Navbar = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
 
   const menuRef = useRef();
-
   const dispatch = useDispatch();
 
   const handelClickAi = () => {
@@ -26,21 +25,17 @@ const Navbar = () => {
     aiBtn === "AI Suggestions" ? setAiBtn("Home") : setAiBtn("AI Suggestions");
   };
 
-  const logoOutHandler = async() => {
+  const logoOutHandler = async () => {
     try {
-        await axios.get(
-        `${server}/users/logout`,
-        {withCredentials: true}
-      );
-      toast.success("Logged Out Successfully")
-      setIsAuthenticated(false)
-
+      await axios.get(`${server}/users/logout`, { withCredentials: true });
+      toast.success("Logged Out Successfully");
+      setIsAuthenticated(false);
     } catch (error) {
-      console.log(error)
-      toast.error("Somthing Went Wrong")
+      console.log(error);
+      toast.error("Somthing Went Wrong");
       setIsAuthenticated(true);
     }
-  }
+  };
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -110,10 +105,13 @@ const Navbar = () => {
       </ul>
 
       <div className="nav-login-cart">
-        {isAuthenticated? <button onClick={logoOutHandler}>logout</button> : <Link to={"/login"}>
-          <button>Login</button>
-        </Link>}
-        
+        {isAuthenticated ? (
+          <button onClick={logoOutHandler}>logout</button>
+        ) : (
+          <Link to={"/login"}>
+            <button>Login</button>
+          </Link>
+        )}
 
         <Link to={"/cart"}>
           <img src={cart_icon} alt="CartIcon" />
