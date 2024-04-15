@@ -33,7 +33,7 @@ const LoginSignup = () => {
       );
       toast.success(data.message);
       setIsAuthenticated(true);
-
+      
     } catch (error) {
       toast.error("Invalid User Credintials");
       setIsAuthenticated(false);

@@ -12,13 +12,10 @@ import kid_banner from './Components/Assets/banner_kids.png';
 import AiComp from './Components/AiComponent/AiComp';
 import { useSelector } from 'react-redux';
 import {Toaster} from "react-hot-toast"
-import { useContext } from 'react';
-import { context } from '.';
 
 
 function App() {
   const showAiSearch = useSelector((store) => store.ai.showAiSearch);
-  const {isAuthenticated, setIsAuthenticated} = useContext(context);
 
   return (
     <div className="App">
@@ -33,7 +30,6 @@ function App() {
             <Route path=':productId' element={<Product />} />
           </Route>
           <Route path='/cart' element={<Cart />} />
-          {/* {isAuthenticated ?  } */}
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
           <Toaster/>
