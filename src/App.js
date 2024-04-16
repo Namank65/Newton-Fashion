@@ -11,11 +11,35 @@ import women_banner from './Components/Assets/banner_women.png';
 import kid_banner from './Components/Assets/banner_kids.png';
 import AiComp from './Components/AiComponent/AiComp';
 import { useSelector } from 'react-redux';
-import {Toaster} from "react-hot-toast"
+import toast, {Toaster} from "react-hot-toast"
+import { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { context, server } from '.';
 
 
 function App() {
   const showAiSearch = useSelector((store) => store.ai.showAiSearch);
+  const {setUser, setIsAuthenticated} = useContext(context)
+
+  useEffect(() => {
+    
+    axios.get(`${server}/users/profile`,{
+      withCredentials: true
+    }).then(res => {
+      console.log(res.data)
+      setUser(res.data.user)
+      setIsAuthenticated(true)
+      toast.success("Welcome To Nubi Fashion")
+      
+    }).catch((error) => {
+      toast.error("Login First")
+      setUser({})
+      setIsAuthenticated(false)
+    })
+  
+  }, [])
+
+  
 
   return (
     <div className="App">
