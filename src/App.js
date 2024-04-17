@@ -1,25 +1,27 @@
-import Navbar from './Components/Navbar/Navbar';
-import Shop from './Pages/Shop';
-import ShopCatogery from './Pages/ShopCatogery';
-import Product from './Pages/Product'
-import Cart from './Pages/Cart';
-import LoginSignup from './Pages/LoginSignup';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from './Components/Footer/Footer';
-import men_banner from './Components/Assets/banner_mens.png';
-import women_banner from './Components/Assets/banner_women.png';
-import kid_banner from './Components/Assets/banner_kids.png';
-import AiComp from './Components/AiComponent/AiComp';
-import { useSelector } from 'react-redux';
-import toast, {Toaster} from "react-hot-toast"
+// import Navbar from './Components/Navbar/Navbar';
+// import Shop from './Pages/Shop';
+// import ShopCatogery from './Pages/ShopCatogery';
+// import Product from './Pages/Product'
+// import Cart from './Pages/Cart';
+// import LoginSignup from './Pages/LoginSignup';
+import { BrowserRouter } from "react-router-dom";
+// import Footer from './Components/Footer/Footer';
+// import men_banner from './Components/Assets/banner_mens.png';
+// import women_banner from './Components/Assets/banner_women.png';
+// import kid_banner from './Components/Assets/banner_kids.png';
+// import AiComp from './Components/AiComponent/AiComp';
+// import { useSelector } from 'react-redux';
+import toast from "react-hot-toast"
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { context, server } from '.';
+import Body from './Components/Body/Body';
+import LoginSignup from "./Pages/LoginSignup";
 
 
 function App() {
-  const showAiSearch = useSelector((store) => store.ai.showAiSearch);
-  const {setUser, setIsAuthenticated} = useContext(context)
+  // const showAiSearch = useSelector((store) => store.ai.showAiSearch);
+  const {setUser, setIsAuthenticated} = useContext(context);
 
   useEffect(() => {
     
@@ -39,12 +41,12 @@ function App() {
   
   }, [])
 
-  
-
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+      {/* <LoginSignup/> */}
+      <Body/>
+        {/* <Navbar />
         {showAiSearch ? (<AiComp />) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
@@ -57,7 +59,7 @@ function App() {
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
           <Toaster/>
-        <Footer />
+        <Footer /> */}
       </BrowserRouter>
     </div>
   );
