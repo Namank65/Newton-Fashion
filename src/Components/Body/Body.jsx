@@ -1,9 +1,8 @@
 import React from 'react';
-
 import ShopCatogery from '../../Pages/ShopCatogery';
 import Navbar from '../Navbar/Navbar';
 import AiComp from '../AiComponent/AiComp';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Product from '../../Pages/Product';
 import Cart from '../../Pages/Cart';
 import LoginSignup from '../../Pages/LoginSignup';
@@ -16,10 +15,9 @@ import women_banner from '../Assets/banner_women.png';
 import kid_banner from '../Assets/banner_kids.png';
 
 
-
-
 const Body = () => {
     const showAiSearch = useSelector((store) => store.ai.showAiSearch);
+
   return (
     <div>
         <Navbar />
@@ -34,7 +32,7 @@ const Body = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
-          <Toaster/>
+          <Toaster />
         <Footer />
     </div>
   )

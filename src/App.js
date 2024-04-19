@@ -4,7 +4,7 @@
 // import Product from './Pages/Product'
 // import Cart from './Pages/Cart';
 // import LoginSignup from './Pages/LoginSignup';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 // import Footer from './Components/Footer/Footer';
 // import men_banner from './Components/Assets/banner_mens.png';
 // import women_banner from './Components/Assets/banner_women.png';
@@ -17,6 +17,7 @@ import axios from 'axios';
 import { context, server } from '.';
 import Body from './Components/Body/Body';
 import LoginSignup from "./Pages/LoginSignup";
+import Browse from "./Components/Body/Browse";
 
 
 function App() {
@@ -43,10 +44,9 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-      {/* <LoginSignup/> */}
-      <Body/>
-        {/* <Navbar />
+      <Browse/>
+      {/* <BrowserRouter>
+        <Navbar />
         {showAiSearch ? (<AiComp />) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
@@ -59,8 +59,8 @@ function App() {
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
           <Toaster/>
-        <Footer /> */}
-      </BrowserRouter>
+        <Footer />
+      </BrowserRouter> */}
     </div>
   );
 }
