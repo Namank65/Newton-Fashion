@@ -1,24 +1,35 @@
 import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Body from './Body'
 import LoginSignup from '../../Pages/LoginSignup'
 import ShopCatogery from '../../Pages/ShopCatogery'
 import men_banner from '../Assets/banner_mens.png';
+import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer'
+import Cart from '../../Pages/Cart'
 
 const Browse = () => {
 
+  const AppLayout = () => {
+    return <div>
+      <Navbar/>
+      <Outlet/>
+      <Footer/>
+    </div>
+  }
+
     const AppRoute = createBrowserRouter([
-        {
-          path: "/",
-          element: <LoginSignup/>
-        },
+        // {
+        //   path: "/",
+        //   element: <LoginSignup/>
+        // },
         {
           path: "/body",
-          element: <Body/>,
+          element: <AppLayout/>,
           children: [
             {
-              path: "/mens",
-              element: <ShopCatogery category="men" banner={men_banner} />
+              path: "/cart",
+              element: <Cart />
             }
           ]
         },

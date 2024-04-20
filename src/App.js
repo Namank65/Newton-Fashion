@@ -4,7 +4,7 @@
 // import Product from './Pages/Product'
 // import Cart from './Pages/Cart';
 // import LoginSignup from './Pages/LoginSignup';
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Outlet, Route } from "react-router-dom";
 // import Footer from './Components/Footer/Footer';
 // import men_banner from './Components/Assets/banner_mens.png';
 // import women_banner from './Components/Assets/banner_women.png';

@@ -2,7 +2,7 @@ import React from 'react';
 import ShopCatogery from '../../Pages/ShopCatogery';
 import Navbar from '../Navbar/Navbar';
 import AiComp from '../AiComponent/AiComp';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import Product from '../../Pages/Product';
 import Cart from '../../Pages/Cart';
 import LoginSignup from '../../Pages/LoginSignup';
@@ -20,7 +20,7 @@ const Body = () => {
 
   return (
     <div>
-        <Navbar />
+        {/* <Navbar />
         {showAiSearch ? (<AiComp />) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
@@ -33,7 +33,7 @@ const Body = () => {
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
           <Toaster />
-        <Footer />
+        <Footer /> */}
     </div>
   )
 }
