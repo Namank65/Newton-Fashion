@@ -64,7 +64,7 @@ const Navbar = () => {
             setMenu("shop");
           }}
         >
-          <Link style={{ textDecoration: "none" }} to={"/"}>
+          <Link style={{ textDecoration: "none" }} to={"/shop"}>
             <span>Shop</span>
           </Link>
           {menu === "shop" ? <hr /> : <></>}
@@ -108,7 +108,7 @@ const Navbar = () => {
         {isAuthenticated ? (
           <button onClick={logoOutHandler}>logout</button>
         ) : (
-          <Link to={"/login"}>
+          <Link to={"/"}>
             <button>Login</button>
           </Link>
         )}

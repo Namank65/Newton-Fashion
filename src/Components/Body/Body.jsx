@@ -20,7 +20,7 @@ const Body = () => {
 
   return (
     <div>
-        {/* <Navbar />
+        
         {showAiSearch ? (<AiComp />) : (<Routes>
           <Route path='/' element={<Shop />} />
           <Route path='/mens' element={<ShopCatogery category="men" banner={men_banner} />} />
@@ -33,7 +33,7 @@ const Body = () => {
           <Route path='/login' element={<LoginSignup />} />
         </Routes>)}
           <Toaster />
-        <Footer /> */}
+        
     </div>
   )
 }
