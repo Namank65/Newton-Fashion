@@ -29,10 +29,11 @@ const Browse = () => {
 
   const AppRoute = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<AppLayout />}>
-        <Route path="" element={<LoginSignup />} />
+      <>
+        <Route path="/" element={<LoginSignup />} />
         <Route path="shop" element={<Shop />} />
-      </Route>
+        <Route path="shopc" element={<ShopCatogery category="men" banner={men_banner} />} />
+        </>
     )
   );
 
