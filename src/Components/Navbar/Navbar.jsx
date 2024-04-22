@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import "./Navbar.css";
 import logo from "../Assets/ecomlogo2.png";
 import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import nav_dropDown from "../Assets/dropdown_icon.png";
 import { useDispatch } from "react-redux";
@@ -21,8 +21,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handelClickAi = () => {
-    dispatch(toggleAiSearch());
+    // dispatch(toggleAiSearch());
     aiBtn === "AI Suggestions" ? setAiBtn("Home") : setAiBtn("AI Suggestions");
+    aiBtn === "Home" ? <Navigate to={"/home"}/> : <Navigate to={"/ai"}/>
+    
   };
 
   const logoOutHandler = async () => {
@@ -64,7 +66,7 @@ const Navbar = () => {
             setMenu("shop");
           }}
         >
-          <Link style={{ textDecoration: "none" }} to={"/shop"}>
+          <Link style={{ textDecoration: "none" }} to={"/home"}>
             <span>Shop</span>
           </Link>
           {menu === "shop" ? <hr /> : <></>}
@@ -119,7 +121,7 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button id="ai-Btn" onClick={handelClickAi} className="aiBtn">
+      <button id="ai-Btn" onClick={() => setAiBtn(<Link to={"/ai"}/>)} className="aiBtn">
         {aiBtn}
       </button>
     </div>
