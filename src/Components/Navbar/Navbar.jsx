@@ -5,27 +5,18 @@ import cart_icon from "../Assets/cart_icon.png";
 import { Link, Navigate } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import nav_dropDown from "../Assets/dropdown_icon.png";
-import { useDispatch } from "react-redux";
-import { toggleAiSearch } from "../../utils/AiCompSlice";
+// import { useDispatch } from "react-redux";
+// import { toggleAiSearch } from "../../utils/AiCompSlice";
 import { context, server } from "../../index";
 import toast from "react-hot-toast";
 import axios from "axios";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
-  const [aiBtn, setAiBtn] = useState("AI Suggestions");
   const { getTotalCartItems } = useContext(ShopContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
 
   const menuRef = useRef();
-  const dispatch = useDispatch();
-
-  const handelClickAi = () => {
-    // dispatch(toggleAiSearch());
-    aiBtn === "AI Suggestions" ? setAiBtn("Home") : setAiBtn("AI Suggestions");
-    aiBtn === "Home" ? <Navigate to={"/home"}/> : <Navigate to={"/ai"}/>
-    
-  };
 
   const logoOutHandler = async () => {
     try {
@@ -38,6 +29,8 @@ const Navbar = () => {
       setIsAuthenticated(true);
     }
   };
+
+  if (!isAuthenticated ) return <Navigate to={"/"} />;
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -121,9 +114,12 @@ const Navbar = () => {
 
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
-      <button id="ai-Btn" onClick={() => setAiBtn(<Link to={"/ai"}/>)} className="aiBtn">
-        {aiBtn}
+
+      <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
+        Ai Suggestions
       </button>
+      </Link>
+
     </div>
   );
 };

@@ -10,7 +10,7 @@ const ShopCatogery = (props) => {
   const { all_product } = useContext(ShopContext);
   return (
     <div className="shop-category">
-       <Navbar/>
+      <Navbar />
       <img className="shopCatogery-banner" src={props.banner} alt="banner" />
       <div className="shopCatogery-indexSort">
         <p>
@@ -32,14 +32,13 @@ const ShopCatogery = (props) => {
                 new_price={item.new_price}
                 old_price={item.old_price}
               />
-              
             );
           } else {
             return null;
           }
         })}
-        <Footer/>
       </div>
+        <Footer />
       <div className="shopCategory-loadMore">Explore More</div>
     </div>
   );

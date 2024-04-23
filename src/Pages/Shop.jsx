@@ -6,6 +6,7 @@ import NewCollection from "../Components/NewCollection/NewCollection";
 import NewsLetter from "../Components/NewsLetter/NewsLetter";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const Shop = () => {
   return (
@@ -17,6 +18,7 @@ const Shop = () => {
       <NewCollection />
       <NewsLetter />
       <Footer/>
+      <Toaster/>
     </div>
   );
 };

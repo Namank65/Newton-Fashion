@@ -4,7 +4,7 @@
 // import Product from './Pages/Product'
 // import Cart from './Pages/Cart';
 // import LoginSignup from './Pages/LoginSignup';
-import { BrowserRouter, Outlet, Route } from "react-router-dom";
+// import { BrowserRouter, Outlet, Route } from "react-router-dom";
 // import Footer from './Components/Footer/Footer';
 // import men_banner from './Components/Assets/banner_mens.png';
 // import women_banner from './Components/Assets/banner_women.png';
@@ -15,8 +15,8 @@ import toast from "react-hot-toast"
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { context, server } from '.';
-import Body from './Components/Body/Body';
-import LoginSignup from "./Pages/LoginSignup";
+// import Body from './Components/Body/Body';
+// import LoginSignup from "./Pages/LoginSignup";
 import Browse from "./Components/Body/Browse";
 
 

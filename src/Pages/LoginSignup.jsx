@@ -3,7 +3,7 @@ import "./CSS/LoginSignup.css";
 import { context, server } from "../index.js";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
@@ -40,7 +40,7 @@ const LoginSignup = () => {
     }
   };
 
-  if (isAuthenticated ) return <Navigate to={"/"} />;
+  if (isAuthenticated ) return <Navigate to={"/home"} />;
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
@@ -85,6 +85,7 @@ const LoginSignup = () => {
           <p>By Continuing, I Agree To The Terms Of Use & Privacy Policy.</p>
         </div>
       </form>
+      <Toaster/>
     </div>
   );
 };

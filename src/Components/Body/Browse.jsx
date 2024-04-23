@@ -12,26 +12,37 @@ import women_banner from "../Assets/banner_women.png";
 import kid_banner from "../Assets/banner_kids.png";
 import Cart from "../../Pages/Cart";
 import Shop from "../../Pages/Shop";
-import { useSelector } from "react-redux";
 import AiComp from "../AiComponent/AiComp";
+import Product from "../../Pages/Product";
+
 
 const Browse = () => {
-  const showAiSearch = useSelector((store) => store.ai.showAiSearch);
-  {/* {showAiSearch ? (<AiComp/>) : () } */}
 
   const AppRoute = createBrowserRouter(
     createRoutesFromElements(
-
       <>
-      <Route path="/" element={<LoginSignup />} />
-      <Route path="home" element={<Shop />} />
-      <Route path="mens" element={<ShopCatogery category="men" banner={men_banner} />} />
-      <Route path="womens" element={<ShopCatogery category="women" banner={women_banner} />} />
-      <Route path="kids" element={<ShopCatogery category="kid" banner={kid_banner} />} />
-      <Route path="cart" element={<Cart />} />
-      <Route path="ai" element={<AiComp />} />
+        <Route path="/" element={<LoginSignup />} />
+        <Route path="home" element={<Shop />} />
+        <Route
+          path="mens"
+          element={<ShopCatogery category="men" banner={men_banner} />}
+        />
+        <Route
+          path="womens"
+          element={<ShopCatogery category="women" banner={women_banner} />}
+        />
+        <Route
+          path="kids"
+          element={<ShopCatogery category="kid" banner={kid_banner} />}
+        />
+
+        <Route path="/product" element={<Product />}>
+          <Route path=":productId" element={<Product />} />
+        </Route>
+
+        <Route path="cart" element={<Cart />} />
+        <Route path="ai" element={<AiComp />} />
       </>
-      
     )
   );
 
