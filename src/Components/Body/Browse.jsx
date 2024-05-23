@@ -25,15 +25,15 @@ const Browse = () => {
         <Route path="home" element={<Shop />} />
         <Route
           path="mens"
-          element={<ShopCatogery category="men" banner={men_banner} />}
+          element={<ShopCatogery category="Men" banner={men_banner} />}
         />
         <Route
           path="womens"
-          element={<ShopCatogery category="women" banner={women_banner} />}
+          element={<ShopCatogery category="Women" banner={women_banner} />}
         />
         <Route
           path="kids"
-          element={<ShopCatogery category="kid" banner={kid_banner} />}
+          element={<ShopCatogery category="Kid" banner={kid_banner} />}
         />
 
         <Route path="/product" element={<Product />}>

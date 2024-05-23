@@ -28,9 +28,9 @@ const ShopCatogery = (props) => {
                 key={index}
                 id={item.id}
                 name={item.name}
-                image={item.image}
-                new_price={item.new_price}
-                old_price={item.old_price}
+                image={item.images}
+                new_price={item.newPrice}
+                old_price={item.oldPrice}
               />
             );
           } else {
@@ -38,8 +38,8 @@ const ShopCatogery = (props) => {
           }
         })}
       </div>
-        <Footer />
       <div className="shopCategory-loadMore">Explore More</div>
+        <Footer />
     </div>
   );
 };

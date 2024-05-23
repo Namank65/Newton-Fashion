@@ -1,18 +1,26 @@
-import React, { createContext, useState } from "react";
-import all_product from "../Components/Assets/all_product";
+import React, { createContext, useEffect, useState } from "react";
+// import all_product from "../Components/Assets/all_product";
 
 export const ShopContext = createContext(null);
 
 const GetDefaultCart = () => {
   let cart = {};
-  for (let index = 0; index < all_product.length + 1; index++) {
+  for (let index = 0; index < 300 + 1; index++) {
     cart[index] = 0;
   }
   return cart;
 };
 
+
 const ShopContextProvider = (props) => {
+  const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
+  
+  useEffect(() => {
+    fetch("https://nubifashon-backend.onrender.com/api/v1/upload/allProducts")
+    .then((resp) => resp.json())
+    .then((data) => setall_product(data?.data))
+  },[])
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

@@ -1,22 +1,7 @@
-// import Navbar from './Components/Navbar/Navbar';
-// import Shop from './Pages/Shop';
-// import ShopCatogery from './Pages/ShopCatogery';
-// import Product from './Pages/Product'
-// import Cart from './Pages/Cart';
-// import LoginSignup from './Pages/LoginSignup';
-// import { BrowserRouter, Outlet, Route } from "react-router-dom";
-// import Footer from './Components/Footer/Footer';
-// import men_banner from './Components/Assets/banner_mens.png';
-// import women_banner from './Components/Assets/banner_women.png';
-// import kid_banner from './Components/Assets/banner_kids.png';
-// import AiComp from './Components/AiComponent/AiComp';
-// import { useSelector } from 'react-redux';
 import toast from "react-hot-toast"
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { context, server } from '.';
-// import Body from './Components/Body/Body';
-// import LoginSignup from "./Pages/LoginSignup";
 import Browse from "./Components/Body/Browse";
 
 
