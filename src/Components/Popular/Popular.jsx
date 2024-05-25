@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Popular.css";
-import data_product from "../Assets/data";
 import Items from "../Items/Items";
 
 const Popular = () => {
+  const [popularProduct, setPopularProduct] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://nubifashon-backend.onrender.com/api/v1/upload/popularInWomen"
+    )
+      .then((resp) => resp.json())
+      .then((data) => setPopularProduct(data?.data));
+  }, []);
+
   return (
     <div className="popular">
       <h1>POPULAR IN WOMEN</h1>
       <hr />
       <div className="popular-item">
-        {data_product.map((item, index) => {
+        {popularProduct.map((item, index) => {
           return (
             <Items
               key={index}
               id={item.id}
               name={item.name}
-              image={item.image}
-              new_price={item.new_price}
-              old_price={item.old_price}
+              image={item.images}
+              new_price={item.newPrice}
+              old_price={item.oldPrice}
             />
           );
         })}
