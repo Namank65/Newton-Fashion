@@ -6,6 +6,7 @@ import remove_icon from "../Assets/cart_cross_icon.png";
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removefromCart } =
     useContext(ShopContext);
+
   return (
     <div className="CartItems">
       <div className="cartItems-format-main">
@@ -17,22 +18,22 @@ const CartItems = () => {
         <p>Remove</p>
       </div>
       <hr />
-      {all_product.map((e, index) => {
+      {all_product?.map((e, index) => {
         if (cartItems[e.id] > 0) {
           return (
             <div key={index}>
               <div className="cartItems-Formate cartItems-format-main">
                 <img
-                  src={e.image}
+                  src={e.images}
                   alt="cartIcon"
                   className="cartIcon-product-icon"
                 />
                 <p>{e.name}</p>
-                <p>${e.new_price}</p>
+                <p>${e.newPrice}</p>
                 <button className="cartItems-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>${e.new_price * cartItems[e.id]}</p>
+                <p>${e.newPrice * cartItems[e.id]}</p>
                 <img
                   className="cartItems-remove-icon"
                   src={remove_icon}

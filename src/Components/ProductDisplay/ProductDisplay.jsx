@@ -12,15 +12,15 @@ const ProductDisplay = (props) => {
     <div className="ProductDisplay">
       <div className="ProductDisplay-left">
         <div className="ProductDisplay-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img src={product.images} alt="" />
+          <img src={product.images} alt="" />
+          <img src={product.images} alt="" />
+          <img src={product.images} alt="" />
         </div>
         <div className="ProductDisplay-img">
           <img
             className="ProductDisplay-main-img"
-            src={product.image}
+            src={product.images}
             alt="productMainImg"
           />
         </div>
@@ -37,10 +37,10 @@ const ProductDisplay = (props) => {
         </div>
         <div className="ProductDisplay-right-prices">
           <div className="ProductDisplay-right-price-old">
-            ${product.old_price}
+            ${product.oldPrice}
           </div>
           <div className="ProductDisplay-right-price-new">
-            ${product.new_price}
+            ${product.newPrice}
           </div>
         </div>
         <div className="ProductDisplay-right-description">
