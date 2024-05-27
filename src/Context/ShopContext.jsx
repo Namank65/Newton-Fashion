@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-// import all_product from "../Components/Assets/all_product";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { context } from "..";
 
 export const ShopContext = createContext(null);
 
@@ -11,19 +11,33 @@ const GetDefaultCart = () => {
   return cart;
 };
 
-
 const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
-  
+  const { isAuthenticated } = useContext(context);
+
   useEffect(() => {
     fetch("https://nubifashon-backend.onrender.com/api/v1/upload/allProducts")
-    .then((resp) => resp.json())
-    .then((data) => setall_product(data?.data))
-  },[])
+      .then((resp) => resp.json())
+      .then((data) => setall_product(data?.data));
+  }, []);
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (isAuthenticated) {
+      fetch("http://localhost:4000/api/v1/upload/addToCart", {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "auth-token": "req.cookies.accessToken",
+          "content-type": "application/json"
+        },
+        //withCredintials: true,
+        body: JSON.stringify({ itemId: itemId }),
+      })
+        .then((resp) => resp.json())
+        .then((data) => console.log(data));
+    }
   };
 
   const removefromCart = (itemId) => {

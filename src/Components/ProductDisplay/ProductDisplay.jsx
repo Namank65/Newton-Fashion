@@ -12,21 +12,21 @@ const ProductDisplay = (props) => {
     <div className="ProductDisplay">
       <div className="ProductDisplay-left">
         <div className="ProductDisplay-img-list">
-          <img src={product.images} alt="" />
-          <img src={product.images} alt="" />
-          <img src={product.images} alt="" />
-          <img src={product.images} alt="" />
+          <img src={product?.images} alt="" />
+          <img src={product?.images} alt="" />
+          <img src={product?.images} alt="" />
+          <img src={product?.images} alt="" />
         </div>
         <div className="ProductDisplay-img">
           <img
             className="ProductDisplay-main-img"
-            src={product.images}
+            src={product?.images}
             alt="productMainImg"
           />
         </div>
       </div>
       <div className="ProductDisplay-right">
-        <h1>{product.name}</h1>
+        <h1>{product?.name}</h1>
         <div className="ProductDisplay-right-stars">
           <img src={star_icon} alt="" />
           <img src={star_icon} alt="" />
@@ -37,10 +37,10 @@ const ProductDisplay = (props) => {
         </div>
         <div className="ProductDisplay-right-prices">
           <div className="ProductDisplay-right-price-old">
-            ${product.oldPrice}
+            ${product?.oldPrice}
           </div>
           <div className="ProductDisplay-right-price-new">
-            ${product.newPrice}
+            ${product?.newPrice}
           </div>
         </div>
         <div className="ProductDisplay-right-description">
@@ -60,7 +60,7 @@ const ProductDisplay = (props) => {
         </div>
         <button
           onClick={() => {
-            addToCart(product.id);
+            addToCart(product?.id);
           }}
         >
           Add To Cart

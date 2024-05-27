@@ -14,7 +14,6 @@ function App() {
     axios.get(`${server}/users/profile`,{
       withCredentials: true
     }).then(res => {
-      console.log(res.data)
       setUser(res.data.user)
       setIsAuthenticated(true)
       toast.success("Welcome To Nubi Fashion")
