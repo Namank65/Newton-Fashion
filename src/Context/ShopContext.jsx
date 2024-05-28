@@ -22,17 +22,18 @@ const ShopContextProvider = (props) => {
       .then((data) => setall_product(data?.data));
   }, []);
 
-  const addToCart = (itemId) => {
+  const addToCart = async(itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
-      fetch("http://localhost:4000/api/v1/upload/addToCart", {
+       await fetch("http://localhost:4000/api/v1/upload/addToCart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
-          "auth-token": "req.cookies.accessToken",
-          "content-type": "application/json"
+          // "Authorization": `Bearer ${authToken}`, 
+          "Content-Type": "application/json"
         },
-        //withCredintials: true,
+        credentials: "same-origin",
+        // withCredentials: true,
         body: JSON.stringify({ itemId: itemId }),
       })
         .then((resp) => resp.json())
