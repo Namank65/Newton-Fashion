@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./NewCollection.css";
 import Item from "../Items/Items";
+import { server } from "../..";
 
 const NewCollection = () => {
   const [new_collection, setNew_collection] = useState([]);
 
   useEffect(() => {
-    fetch("https://nubifashon-backend.onrender.com/api/v1/upload/newCollection")
+    fetch(`${server}/upload/newCollection`)
       .then((resp) => resp.json())
       .then((data) => setNew_collection(data?.data));
   }, []);

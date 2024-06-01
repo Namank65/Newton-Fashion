@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Popular.css";
 import Items from "../Items/Items";
+import { server } from "../..";
 
 const Popular = () => {
   const [popularProduct, setPopularProduct] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://nubifashon-backend.onrender.com/api/v1/upload/popularInWomen"
+      `${server}/upload/popularInWomen`
     )
       .then((resp) => resp.json())
       .then((data) => setPopularProduct(data?.data));

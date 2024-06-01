@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { context } from "..";
+import { context, server } from "..";
 import { getCookie } from "../utils/Cookie.utiles";
 
 export const ShopContext = createContext(null);
@@ -16,69 +16,72 @@ const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const { isAuthenticated } = useContext(context);
-  const [authToken, setAuthToken] = useState('');
+  const [authToken, setAuthToken] = useState("");
 
   useEffect(() => {
-    fetch("https://nubifashon-backend.onrender.com/api/v1/upload/allProducts")
+    fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
-    
-      if (isAuthenticated) {
-        fetch("https://nubifashon-backend.onrender.com/api/v1/upload/getCart", {
-         method: "POST",
-         headers: {
-           Accept: "application/form-data",
-           "Authorization": `Bearer ${authToken}`, 
-           "Content-Type": "application/json"
-         },
-         credentials: "include",
-         body: "",
-       })
-         .then((resp) => resp.json())
-         .then((data) => setCartItems(data?.data));
-     }
 
-  }, []);
-
-  useEffect(() => {
-    const token = getCookie('authToken');
-    setAuthToken(token);
-}, []);
-
-  const addToCart = async(itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
-       await fetch("https://nubifashon-backend.onrender.com/api/v1/upload/addToCart", {
+      fetch(`${server}/upload/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
-          "Authorization": `Bearer ${authToken}`, 
-          "Content-Type": "application/json"
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId }),
+        body: "",
       })
+        .then((resp) => resp.json())
+        .then((data) => setCartItems(data?.data));
+    }
+
+    const token = getCookie("authToken");
+    setAuthToken(token);
+  }, []);
+
+  const addToCart = async (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (isAuthenticated) {
+      await fetch(
+        `${server}/upload/addToCart`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/form-data",
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ itemId: itemId }),
+        }
+      )
         .then((resp) => resp.json())
         .then((data) => console.log(data));
     }
   };
 
-  const removefromCart = async(itemId) => {
+  const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (isAuthenticated) {
-      await fetch("https://nubifashon-backend.onrender.com/api/v1/upload/removeFromCart", {
-       method: "POST",
-       headers: {
-         Accept: "application/form-data",
-         "Authorization": `Bearer ${authToken}`, 
-         "Content-Type": "application/json"
-       },
-       credentials: "include",
-       body: JSON.stringify({ itemId: itemId }),
-     })
-       .then((resp) => resp.json())
-       .then((data) => console.log(data));
-   }
+      await fetch(
+        `${server}/upload/removeFromCart`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/form-data",
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ itemId: itemId }),
+        }
+      )
+        .then((resp) => resp.json())
+        .then((data) => console.log(data));
+    }
   };
 
   const getTotalCartAmount = () => {

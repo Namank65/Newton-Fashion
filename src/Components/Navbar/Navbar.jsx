@@ -5,8 +5,6 @@ import cart_icon from "../Assets/cart_icon.png";
 import { Link, Navigate } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import nav_dropDown from "../Assets/dropdown_icon.png";
-// import { useDispatch } from "react-redux";
-// import { toggleAiSearch } from "../../utils/AiCompSlice";
 import { context, server } from "../../index";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -116,7 +114,7 @@ const Navbar = () => {
       </div>
 
       <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
-        Ai Suggestions
+        Ai
       </button>
       </Link>
 

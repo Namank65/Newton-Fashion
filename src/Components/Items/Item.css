@@ -80,11 +80,11 @@
 
 @media(max-width: 500px) {
   .item {
-    width: 160px;
+    width: 150px;
     font-size: 12px;
   }
 
   .item img {
-    width: 160px;
+    width: 150px;
   }
 }

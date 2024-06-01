@@ -265,7 +265,35 @@
 }
 
 @media(max-width:400px) {
+  .logoContainer {
+    gap: 1px;
+}
   .logoContainer p {
     font-size: 16px;
+    margin-left: 2px;
+  }
+  .nav-dropDown {
+    padding: 7px;
+}
+  #ai-Btn {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+    margin-left: -25px;
+  }
+  .logoimg {
+    width: 40px;
+  }
+  .logoContainer p{
+    width: 30px;
+    font-size: 13px;
+  }
+
+  .nav-login-cart {
+    margin-left: -30px;
+    margin-right: -10px;
+  }
+  .navbar{
+    overflow: hidden;
   }
 }
