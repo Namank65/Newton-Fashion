@@ -14,6 +14,7 @@ import Cart from "../../Pages/Cart";
 import Shop from "../../Pages/Shop";
 import AiComp from "../AiComponent/AiComp";
 import Product from "../../Pages/Product";
+import PaymentSuccess from "../PaymentSuccess/PaymentSuccess";
 
 
 const Browse = () => {
@@ -42,6 +43,7 @@ const Browse = () => {
 
         <Route path="cart" element={<Cart />} />
         <Route path="ai" element={<AiComp />} />
+        <Route path="paymentsuccess" element={<PaymentSuccess />} />
       </>
     )
   );

@@ -1,0 +1,14 @@
+ .paymentSuccess{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: bold;
+    flex-direction: column;
+}
+
+.heading{
+    padding: 20px 20px;
+    border-radius: 8px;
+    background: rgb(18, 206, 18);
+}

@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
+// import { useSelector } from "react-redux";
 
 const CartItems = () => {
-  const { getTotalCartAmount, all_product, cartItems, removefromCart } =
+  const { getTotalCartAmount, all_product, cartItems, removefromCart, checkoutHandler } =
     useContext(ShopContext);
+    const [totalCartAmount, setTotalCartAmount] = useState(getTotalCartAmount());
+    let checkoutName = [""];
+    // const Size = useSelector((store) => store.ai.productSize)
+    // console.log(Size)
 
   return (
     <div className="CartItems">
@@ -20,6 +25,7 @@ const CartItems = () => {
       <hr />
       {all_product?.map((e, index) => {
         if (cartItems[e.id] > 0) {
+          checkoutName =  e.name;
           return (
             <div key={index}>
               <div className="cartItems-Formate cartItems-format-main">
@@ -34,6 +40,7 @@ const CartItems = () => {
                   {cartItems[e.id]}
                 </button>
                 <p>${e.newPrice * cartItems[e.id]}</p>
+                {/* <p>{Size}</p> */}
                 <img
                   className="cartItems-remove-icon"
                   src={remove_icon}
@@ -69,7 +76,7 @@ const CartItems = () => {
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => {checkoutHandler(totalCartAmount, checkoutName)}}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartItems-promoCode">
           <p>If You Have A Promocode, Enter Here</p>

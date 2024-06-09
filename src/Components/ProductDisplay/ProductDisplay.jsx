@@ -1,12 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
+import { useDispatch, useSelector } from "react-redux";
+import { productSize } from "../../utils/AiCompSlice";
 
 const ProductDisplay = (props) => {
   const { product } = props;
-  const { addToCart } = useContext(ShopContext);
+  const { addToCart, all_product, cartItems } = useContext(ShopContext);
+
+  const dispatch = useDispatch();
+  const handleAddSize = () => {
+    dispatch(productSize("S"))
+  }
+  const handleAddSize2 = (id) => {
+    // console.log(cartItems)
+
+    all_product.map((i) => i.id === id ? dispatch(productSize("M")) : "" )
+    
+    // if(id){
+    //   dispatch(productSize("M"))
+    // }
+  }
 
   return (
     <div className="ProductDisplay">
@@ -51,11 +67,11 @@ const ProductDisplay = (props) => {
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
+            <div onClick={() => handleAddSize()}>S</div>
+             <div onClick={() => handleAddSize2(product?.id)}>M</div>
+            {/*<div onClick={() => setProductSize("L")}>L</div>
+            <div onClick={() => setProductSize("XL")}>XL</div>
+            <div onClick={() => setProductSize("XXL")}>XXL</div> */}
           </div>
         </div>
         <button
