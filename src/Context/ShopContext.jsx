@@ -2,7 +2,6 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { context, server } from "..";
 import { getCookie } from "../utils/Cookie.utiles";
 import axios from "axios";
-// import Razorpay from ""
 
 export const ShopContext = createContext(null);
 
@@ -103,8 +102,7 @@ const ShopContextProvider = (props) => {
     return totalItem;
   };
 
-  const checkoutHandler = async (amount, name) => {
-console.log(name)
+  const checkoutHandler = async (amount) => {
     const {
       data: { key },
     } = await axios(`${server}/payment/getRazorKey`);
