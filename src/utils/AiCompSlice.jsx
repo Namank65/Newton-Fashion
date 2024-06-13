@@ -7,7 +7,6 @@ const AiCompSlice = createSlice({
     clothpic: null,
     clothNames: null,
     removeResults: null,
-    productSize: ""
   },
   reducers: {
     toggleAiSearch: (state) => {
@@ -20,13 +19,9 @@ const AiCompSlice = createSlice({
     },
     removeAiSearchResults: (state) => {
       state.clothpic.length = 0
-    },
-    productSize: (state, action) => {
-      state.productSize = action.payload
-    } 
-
+    }
   },
 });
 
-export const { toggleAiSearch, aiSearchResults, removeAiSearchResults, productSize } = AiCompSlice.actions;
+export const { toggleAiSearch, aiSearchResults, removeAiSearchResults } = AiCompSlice.actions;
 export default AiCompSlice.reducer;
