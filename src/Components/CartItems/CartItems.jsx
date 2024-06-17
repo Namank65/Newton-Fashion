@@ -26,7 +26,6 @@ const CartItems = () => {
       <hr />
       {all_product?.map((e, index) => {
         if (cartItems[e.id] > 0) {
-          checkoutName = e.name;
           return (
             <div key={index}>
               <div className="cartItems-Formate cartItems-format-main">
@@ -36,11 +35,11 @@ const CartItems = () => {
                   className="cartIcon-product-icon"
                 />
                 <p>{e.name}</p>
-                <p>${e.newPrice}</p>
+                <p>₹{e.newPrice}</p>
                 <button className="cartItems-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>${e.newPrice * cartItems[e.id]}</p>
+                <p>₹{e.newPrice * cartItems[e.id]}</p>
                 <img
                   className="cartItems-remove-icon"
                   src={remove_icon}
