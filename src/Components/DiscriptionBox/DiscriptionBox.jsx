@@ -21,7 +21,7 @@ const DiscriptionBox = () => {
         <p>
           E-commerce websites typically display products or services a detailed
           descriptions, images, prices, and any available var (e.g., sizes,
-          colors). Each product usually has its own dedi with relevant
+          colors). Each product usually has its own details with relevant
           information.
         </p>
       </div>
