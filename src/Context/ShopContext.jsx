@@ -56,8 +56,7 @@ const ShopContextProvider = (props) => {
         credentials: "include",
         body: JSON.stringify({ itemId: itemId }),
       })
-        .then((resp) => resp.json())
-        .then((data) => console.log(data));
+        .then((resp) => resp.json());
     }
   };
 
