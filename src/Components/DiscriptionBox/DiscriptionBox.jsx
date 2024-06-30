@@ -15,7 +15,7 @@ const DiscriptionBox = () => {
           marketplace where businesses and individ showcase their products,
           interact with customers, and conduc transactions without the need for
           a physical presence. E-com websites have gained immense popularity due
-          to their conveni accessibility, and the global reach they offer.
+          to their conveni accessibility, and the global reach they offer to keep the product dynamic.
         </p>
 
         <p>
