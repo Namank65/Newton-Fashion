@@ -20,7 +20,7 @@ const DiscriptionBox = () => {
 
         <p>
           E-commerce websites typically display products or services a detailed
-          descriptions, images, prices, and any available vareant of that particular product (e.g., sizes,
+          descriptions, images, prices, and any available vareant of that particular product has to been in this e-commerce web app (e.g., sizes,
           colors). Each product usually has its own details with relevant products and information
           information and details as required for the product with accurate Discription.
         </p>
