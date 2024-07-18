@@ -6,7 +6,7 @@ const DiscriptionBox = () => {
     <div className="DiscriptionBox">
       <div className="DiscriptionBox-navigator">
         <div className="DiscriptionBox-nav-box">Discription</div>
-        <div className="DiscriptionBox-nav-box fade">Reviews (125)</div>
+        <div className="DiscriptionBox-nav-box fade">Reviews (120)</div>
       </div>
       <div className="DiscriptionBox-Discription">
         <p>
