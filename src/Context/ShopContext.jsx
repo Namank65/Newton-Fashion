@@ -118,6 +118,7 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
+
     const options = {
       key,
       amount,
