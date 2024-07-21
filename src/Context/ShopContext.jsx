@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { context, server } from "..";
 import { getCookie } from "../utils/Cookie.utiles";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const ShopContext = createContext(null);
 
@@ -102,6 +103,7 @@ const ShopContextProvider = (props) => {
   };
 
   const checkoutHandler = async (amount) => {
+    if(amount === 0) return alert("Please Add Items To The Cart First");
     const {
       data: { key },
     } = await axios(`${server}/payment/getRazorKey`);
