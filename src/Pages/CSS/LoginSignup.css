@@ -2,16 +2,17 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(180deg, #20bdff, #fefefe);
-    padding-top: 10px;
 }
+
 .loginHeading{
     width: 100%;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #8243d4, #fefefe);
+    background: linear-gradient(180deg, #437fd4, #fefefe);
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .loginsignup-container {
