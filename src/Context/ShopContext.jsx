@@ -103,7 +103,7 @@ const ShopContextProvider = (props) => {
   };
 
   const checkoutHandler = async (amount) => {
-    if(amount === 0) return alert("Please Add Items To The Cart First");
+    if(amount === 0) return toast.error("Please Add Items To The Cart First");
     const {
       data: { key },
     } = await axios(`${server}/payment/getRazorKey`);
