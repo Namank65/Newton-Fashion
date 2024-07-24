@@ -90,3 +90,9 @@
     font-size: 13px;
   }
 }
+
+@media(max-width: 400px){
+  .footer-copyright p{
+    font-size: 7px;
+  }
+}
