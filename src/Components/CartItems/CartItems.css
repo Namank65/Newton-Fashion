@@ -72,6 +72,11 @@
   cursor: pointer;
 }
 
+.cartItems-total button:hover {
+  border-radius: 10px;
+  background: #db4444;
+}
+
 .cartItems-promoCode {
   flex: 1;
   font-size: 16px;
