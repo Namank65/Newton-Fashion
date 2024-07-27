@@ -10,7 +10,7 @@ const DiscriptionBox = () => {
       </div>
       <div className="DiscriptionBox-Discription">
         <p>
-          This is An e-commerce named as nubi fashion website and web aap is an online platform that facilitate buying and
+          This is An e-com named as nubi fashion website and web aap is an online platform that facilitate buying and
           selling of products or services over the internet serves as a virtual
           marketplace where businesses and individ showcase their products in different parts of the world,
           interact with customers, and conduc transactions without the need for
