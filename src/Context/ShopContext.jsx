@@ -55,7 +55,7 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: "M" }),
+        body: JSON.stringify({ itemId: itemId}),
       })
         .then((resp) => resp.json());
     }
