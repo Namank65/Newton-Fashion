@@ -38,6 +38,7 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => setCartItems(data?.data));
+        
     }
 
     const token = getCookie("authToken");

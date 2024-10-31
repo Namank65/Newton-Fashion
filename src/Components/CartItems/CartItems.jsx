@@ -25,7 +25,7 @@ const CartItems = () => {
       </div>
       <hr />
       {all_product?.map((e, index) => {
-        if (cartItems[e.id] > 0) {
+        if (cartItems[e.id].quantity > 0) {
           return (
             <div key={index}>
               <div className="cartItems-Formate cartItems-format-main">
@@ -37,9 +37,9 @@ const CartItems = () => {
                 <p>{e.name}</p>
                 <p>₹{e.newPrice}</p>
                 <button className="cartItems-quantity">
-                  {cartItems[e.id]}
+                  {cartItems[e.id].quantity}
                 </button>
-                <p>₹{e.newPrice * cartItems[e.id]}</p>
+                <p>₹{e.newPrice * cartItems[e.id].quantity}</p>
                 <img
                   className="cartItems-remove-icon"
                   src={remove_icon}
