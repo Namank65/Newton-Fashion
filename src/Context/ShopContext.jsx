@@ -8,7 +8,7 @@ export const ShopContext = createContext(null);
 
 const GetDefaultCart = () => {
   let cart = {};
-  for (let index = 0; index < 300 + 1; index++) {
+  for (let index = 0; index < 100 + 1; index++) {
     cart[index] = 0;
   }
   return cart;
@@ -37,8 +37,7 @@ const ShopContextProvider = (props) => {
         body: "",
       })
         .then((resp) => resp.json())
-        .then((data) => setCartItems(data?.data));
-        
+        .then((data) => setCartItems(data?.data));  
     }
 
     const token = getCookie("authToken");
@@ -83,11 +82,11 @@ const ShopContextProvider = (props) => {
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
-      if (cartItems[item] > 0) {
+      if (cartItems[item].quantity > 0) {
         let itemInfo = all_product.find(
           (product) => product.id === Number(item)
         );
-        totalAmount += itemInfo.newPrice * cartItems[item];
+        totalAmount += itemInfo.newPrice * cartItems[item].quantity;
       }
     }
     return totalAmount;

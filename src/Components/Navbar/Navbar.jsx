@@ -22,7 +22,6 @@ const Navbar = () => {
       toast.success("Logged Out Successfully");
       setIsAuthenticated(false);
     } catch (error) {
-      console.log(error);
       toast.error("Somthing Went Wrong");
       setIsAuthenticated(true);
     }
