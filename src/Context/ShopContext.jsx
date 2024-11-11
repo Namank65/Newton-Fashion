@@ -44,7 +44,7 @@ const ShopContextProvider = (props) => {
     setAuthToken(token);
   }, []);
 
-  const addToCart = async (itemId) => {
+  const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
       await fetch(`${server}/upload/addToCart`, {
@@ -55,7 +55,7 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId}),
+        body: JSON.stringify({ itemId: itemId, size: size}),
       })
         .then((resp) => resp.json());
     }

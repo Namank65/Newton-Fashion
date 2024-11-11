@@ -7,6 +7,7 @@ import { ShopContext } from "../../Context/ShopContext";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
+  const [size, setSize] = useState("")
 
   return (
     <div className="ProductDisplay">
@@ -51,16 +52,16 @@ const ProductDisplay = (props) => {
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <p>S</p>
-            <p>M</p>
-            <p>L</p>
-            <p>XL</p>
-            <p>XXL</p>
+            <p onClick={() => setSize("S")}>S</p>
+            <p onClick={() => setSize("M")}>M</p>
+            <p onClick={() => setSize("L")}>L</p>
+            <p onClick={() => setSize("XL")}>XL</p>
+            <p onClick={() => setSize("XXL")}>XXL</p>
           </div>
         </div>
         <button
           onClick={() => {
-            addToCart(product?.id);
+            addToCart(product?.id, size);
           }}
         >
           Add To Cart
