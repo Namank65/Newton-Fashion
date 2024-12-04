@@ -8,8 +8,11 @@ export const ShopContext = createContext(null);
 
 const GetDefaultCart = () => {
   let cart = {};
-  for (let index = 0; index < 100 + 1; index++) {
-    cart[index] = 0;
+  for (let i = 0; i < 100 + 1; i++) {
+    cart[i] = {
+      quantity: 0,
+      productSize: "",
+    };
   }
   return cart;
 };
@@ -48,6 +51,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
       await fetch(`${server}/upload/addToCart`, {
+      // await fetch(`http://localhost:4000/api/v1/upload/addToCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
