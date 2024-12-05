@@ -19,6 +19,7 @@ const CartItems = () => {
         <p>Products</p>
         <p>Title</p>
         <p>Price</p>
+        <p>Size</p>
         <p>Quantity</p>
         <p>Total</p>
         <p>Remove</p>
@@ -36,6 +37,7 @@ const CartItems = () => {
                 />
                 <p>{e.name}</p>
                 <p>₹{e.newPrice}</p>
+                <p>{cartItems[e.id].productSize}</p>
                 <button className="cartItems-quantity">
                   {cartItems[e.id].quantity}
                 </button>
