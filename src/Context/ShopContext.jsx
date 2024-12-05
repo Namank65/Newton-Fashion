@@ -45,7 +45,7 @@ const ShopContextProvider = (props) => {
 
     const token = getCookie("authToken");
     setAuthToken(token);
-  }, []);
+  }, [cartItems]);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
