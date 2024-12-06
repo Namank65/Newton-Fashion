@@ -3,6 +3,7 @@ import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const ProductDisplay = (props) => {
   const { product } = props;
@@ -73,6 +74,7 @@ const ProductDisplay = (props) => {
           <span>Tags :</span>Modern, Latest
         </p>
       </div>
+      <Toaster/>
     </div>
   );
 };

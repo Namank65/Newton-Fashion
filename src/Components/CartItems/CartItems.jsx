@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
+import { Toaster } from "react-hot-toast";
+
 
 const CartItems = () => {
   const {
@@ -93,6 +95,7 @@ const CartItems = () => {
           </div>
         </div>
       </div>
+      <Toaster/>
     </div>
   );
 };

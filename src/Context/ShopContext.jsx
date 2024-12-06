@@ -51,7 +51,6 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
       await fetch(`${server}/upload/addToCart`, {
-      // await fetch(`http://localhost:4000/api/v1/upload/addToCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -59,9 +58,10 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: size}),
+        body: JSON.stringify({ itemId: itemId, size: size})
       })
-        .then((resp) => resp.json());
+      .then((resp) => resp.json());
+      toast.success("Product Added In The Cart")
     }
   };
 
@@ -80,6 +80,7 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => console.log(data));
+        toast.success("Product Removed From The Cart")
     }
   };
 
