@@ -10,6 +10,11 @@ const ProductDisplay = (props) => {
   const { addToCart } = useContext(ShopContext);
   const [size, setSize] = useState("")
 
+  const SizeS = () => {
+    setSize("S")
+    toast.success("Product Size Selected")
+  }
+
   return (
     <div className="ProductDisplay">
       <div className="ProductDisplay-left">
@@ -53,7 +58,7 @@ const ProductDisplay = (props) => {
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <p onClick={() => setSize("S")}>S</p>
+            <p onClick={() => SizeS()}>S</p>
             <p onClick={() => setSize("M")}>M</p>
             <p onClick={() => setSize("L")}>L</p>
             <p onClick={() => setSize("XL")}>XL</p>
