@@ -61,7 +61,6 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify({ itemId: itemId, size: size})
       })
       .then((resp) => resp.json());
-      toast.success("Product Added In The Cart")
     }
   };
 
@@ -80,7 +79,7 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => console.log(data));
-        toast.success("Product Removed From The Cart")
+        toast.success("Item Removed From Cart")
     }
   };
 

@@ -11,13 +11,14 @@ const CartItems = () => {
     all_product,
     cartItems,
     removefromCart,
-    checkoutHandler,
+    checkoutHandler
   } = useContext(ShopContext);
   const [totalCartAmount, setTotalCartAmount] = useState(getTotalCartAmount());
+  // console.log(getTotalCartAmount())
 
   return (
     <div className="CartItems">
-      <div className="cartItems-format-main">
+      {getTotalCartAmount() > 0 ? <div className="cartItems-format-main">
         <p>Products</p>
         <p>Title</p>
         <p>Price</p>
@@ -25,7 +26,8 @@ const CartItems = () => {
         <p>Quantity</p>
         <p>Total</p>
         <p>Remove</p>
-      </div>
+      </div> : <h1>Your Cart Is Empty</h1> }
+      
       <hr />
       {all_product?.map((e, index) => {
         if (cartItems[e.id].quantity > 0) {

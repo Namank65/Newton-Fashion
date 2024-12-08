@@ -10,9 +10,33 @@ const ProductDisplay = (props) => {
   const { addToCart } = useContext(ShopContext);
   const [size, setSize] = useState("")
 
-  const SizeS = () => {
-    setSize("S")
-    toast.success("Product Size Selected")
+  const SelectSize = (prop) => {
+    if (prop === "S"){
+      setSize(prop)
+      toast.success("Product Size S Selected")
+    }
+    if(prop === "M"){
+      setSize(prop)
+      toast.success("Product Size M Selected")
+    }
+    if(prop === "L"){
+      setSize(prop)
+      toast.success("Product Size L Selected")
+    }
+    if(prop === "XL"){
+      setSize(prop)
+      toast.success("Product Size XL Selected")
+    }
+    if(prop === "XXL"){
+      setSize(prop)
+      toast.success("Product Size XXL Selected")
+    }
+  }
+  const AddToCart = () => {
+    if (size) {
+      addToCart(product?.id, size);
+      toast.success("Item Added To Cart")
+    } else toast.error("Please Select Item Size First")
   }
 
   return (
@@ -58,16 +82,16 @@ const ProductDisplay = (props) => {
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <p onClick={() => SizeS()}>S</p>
-            <p onClick={() => setSize("M")}>M</p>
-            <p onClick={() => setSize("L")}>L</p>
-            <p onClick={() => setSize("XL")}>XL</p>
-            <p onClick={() => setSize("XXL")}>XXL</p>
+            <p onClick={() => SelectSize("S")}>S</p>
+            <p onClick={() => SelectSize("M")}>M</p>
+            <p onClick={() => SelectSize("L")}>L</p>
+            <p onClick={() => SelectSize("XL")}>XL</p>
+            <p onClick={() => SelectSize("XXL")}>XXL</p>
           </div>
         </div>
         <button
           onClick={() => {
-            addToCart(product?.id, size);
+            AddToCart()
           }}
         >
           Add To Cart
