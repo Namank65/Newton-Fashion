@@ -59,6 +59,11 @@
     cursor: pointer;
 }
 
+.loginsignup-container button:hover {
+  background: #d11b1b;
+  color: #fbfbfb;
+}
+
 .loginsignup-login {
     margin-top: 20px;
     color: #5c5c5c;
@@ -141,6 +146,7 @@
     .loginsignup-container button {
         height: 50px;
         font-size: 16px;
+
     }
     .loginHeading{
         font-size: large;
