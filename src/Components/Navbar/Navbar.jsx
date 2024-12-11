@@ -13,6 +13,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
+  const { isAdmin, setIsAdmin } = useContext(context);
 
   const menuRef = useRef();
 
@@ -112,10 +113,14 @@ const Navbar = () => {
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
 
-      <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
+      {isAdmin ? <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
         Ai
       </button>
-      </Link>
+      </Link> : <Link to={"https://www.google.com"}><button id="ai-Btn"  className="aiBtn">
+        Admin
+      </button>
+      </Link>}
+      
 
     </div>
   );

@@ -8,15 +8,16 @@ import appStore from './utils/appStore';
 
 export const server = "https://nubifashon-backend.onrender.com/api/v1"
 
-export const context = createContext({isAuthenticated: true});
+export const context = createContext({isAuthenticated: true, isAdmin: false});
 
 const AppWrapper = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [user, setUser] = useState(false);
 
   return (
-    <context.Provider value={{isAuthenticated, setIsAuthenticated, user, setUser}}>
+    <context.Provider value={{isAuthenticated, setIsAuthenticated, user, setUser, isAdmin, setIsAdmin}}>
       <App/>
     </context.Provider>
   )
