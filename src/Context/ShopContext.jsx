@@ -26,10 +26,11 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
+      .then((data) => console.log(data))
       .then((data) => setall_product(data?.data));
 
     if (isAuthenticated) {
-      fetch(`${server}/upload/getCart`, {
+      const getcart = fetch(`${server}/upload/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -45,7 +46,7 @@ const ShopContextProvider = (props) => {
 
     const token = getCookie("authToken");
     setAuthToken(token);
-  }, [cartItems]);
+  }, []);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
