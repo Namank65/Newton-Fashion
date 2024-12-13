@@ -26,11 +26,10 @@ const ShopContextProvider = (props) => {
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
-      .then((data) => console.log(data))
       .then((data) => setall_product(data?.data));
 
     if (isAuthenticated) {
-      const getcart = fetch(`${server}/upload/getCart`, {
+      fetch(`${server}/upload/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -38,14 +37,15 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: "",
+        body: ""
       })
         .then((resp) => resp.json())
-        .then((data) => setCartItems(data?.data));  
+        .then((data) => setCartItems(data?.data));
     }
 
     const token = getCookie("authToken");
     setAuthToken(token);
+    console.log("rerendering")
   }, []);
 
   const addToCart = async (itemId, size) => {
@@ -59,9 +59,8 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: size})
-      })
-      .then((resp) => resp.json());
+        body: JSON.stringify({ itemId: itemId, size: size }),
+      }).then((resp) => resp.json());
     }
   };
 
@@ -80,7 +79,7 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => console.log(data));
-        toast.success("Item Removed From Cart")
+      toast.success("Item Removed From Cart");
     }
   };
 
@@ -108,14 +107,12 @@ const ShopContextProvider = (props) => {
   };
 
   const checkoutHandler = async (amount) => {
-    if(amount === 0) return toast.error("Please Add Items To The Cart First");
+    if (amount === 0) return toast.error("Please Add Items To The Cart First");
     const {
       data: { key },
     } = await axios(`${server}/payment/getRazorKey`);
 
-    const {
-      data
-    } = await axios.post(
+    const { data } = await axios.post(
       `${server}/payment/checkout`,
       { amount },
       {
@@ -147,8 +144,8 @@ const ShopContextProvider = (props) => {
         color: "#3399cc",
       },
     };
-    const razor = new window.Razorpay(options)
-      razor.open();
+    const razor = new window.Razorpay(options);
+    razor.open();
   };
 
   const ContextValue = {
