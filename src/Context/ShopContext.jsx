@@ -23,6 +23,23 @@ const ShopContextProvider = (props) => {
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
 
+ 
+  const addToCart = async (itemId, size) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (isAuthenticated) {
+      await fetch(`${server}/upload/addToCart`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ itemId: itemId, size: size }),
+      }).then((resp) => resp.json());
+    }
+  };
+
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
@@ -42,27 +59,10 @@ const ShopContextProvider = (props) => {
         .then((resp) => resp.json())
         .then((data) => setCartItems(data?.data));
     }
-
     const token = getCookie("authToken");
     setAuthToken(token);
     console.log("rerendering")
-  }, []);
-
-  const addToCart = async (itemId, size) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    if (isAuthenticated) {
-      await fetch(`${server}/upload/addToCart`, {
-        method: "POST",
-        headers: {
-          Accept: "application/form-data",
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: size }),
-      }).then((resp) => resp.json());
-    }
-  };
+  }, [cartItems]);
 
   const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
@@ -78,7 +78,6 @@ const ShopContextProvider = (props) => {
         body: JSON.stringify({ itemId: itemId }),
       })
         .then((resp) => resp.json())
-        .then((data) => console.log(data));
       toast.success("Item Removed From Cart");
     }
   };
