@@ -23,7 +23,6 @@ const ShopContextProvider = (props) => {
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
 
- 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     if (isAuthenticated) {
@@ -35,8 +34,8 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: size }),
-      }).then((resp) => resp.json());
+        body: JSON.stringify({ itemId: itemId, size: size })
+      })
     }
   };
 
@@ -54,15 +53,29 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: ""
+        body: "",
       })
         .then((resp) => resp.json())
-        .then((data) => setCartItems(data?.data));
-    }
-    const token = getCookie("authToken");
-    setAuthToken(token);
-    console.log("rerendering")
-  }, [cartItems]);
+        .then((data) => setCartItems(data?.data))
+      }
+      const token = getCookie("authToken");
+      setAuthToken(token);
+      console.log("rerendering1");
+    }, []);
+    
+    useEffect(() => {
+      fetch(`${server}/upload/getCart`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: "",
+      })
+    console.log("rerendering2");
+  }, [cartItems])
 
   const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
@@ -77,7 +90,6 @@ const ShopContextProvider = (props) => {
         credentials: "include",
         body: JSON.stringify({ itemId: itemId }),
       })
-        .then((resp) => resp.json())
       toast.success("Item Removed From Cart");
     }
   };
