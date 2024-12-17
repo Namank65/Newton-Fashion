@@ -3,6 +3,7 @@ import { context, server } from "..";
 import { getCookie } from "../utils/Cookie.utiles";
 import axios from "axios";
 import toast from "react-hot-toast";
+import {UseGetCart} from "./UseGetCart"
 
 export const ShopContext = createContext(null);
 
@@ -38,6 +39,7 @@ const ShopContextProvider = (props) => {
       })
     }
   };
+  // UseGetCart()
 
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
@@ -60,22 +62,8 @@ const ShopContextProvider = (props) => {
       }
       const token = getCookie("authToken");
       setAuthToken(token);
-      console.log("rerendering1");
     }, []);
-    
-    useEffect(() => {
-      fetch(`${server}/upload/getCart`, {
-        method: "POST",
-        headers: {
-          Accept: "application/form-data",
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: "",
-      })
-    console.log("rerendering2");
-  }, [cartItems])
+
 
   const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
@@ -163,6 +151,9 @@ const ShopContextProvider = (props) => {
     getTotalCartItems,
     getTotalCartAmount,
     all_product,
+    setCartItems,
+    authToken, 
+    setAuthToken,
     cartItems,
     addToCart,
     removefromCart,
