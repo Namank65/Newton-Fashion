@@ -24,22 +24,23 @@ const ShopContextProvider = (props) => {
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
 
-  const addToCart = async (itemId, size) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    if (isAuthenticated) {
-      await fetch(`${server}/upload/addToCart`, {
-        method: "POST",
-        headers: {
-          Accept: "application/form-data",
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({ itemId: itemId, size: size })
-      })
-    }
-  };
-  // UseGetCart()
+//   const getCart = () => {
+//     useEffect(() => {
+//       fetch(`${server}/upload/getCart`, {
+//         method: "POST",
+//         headers: {
+//           Accept: "application/form-data",
+//           Authorization: `Bearer ${authToken}`,
+//           "Content-Type": "application/json",
+//         },
+//         credentials: "include",
+//         body: "",
+//       })
+//         .then((resp) => resp.json())
+//         .then((data) => setCartItems(data?.data))
+//     }, []);
+
+// }
 
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
@@ -62,8 +63,23 @@ const ShopContextProvider = (props) => {
       }
       const token = getCookie("authToken");
       setAuthToken(token);
-    }, []);
+    },[]);
 
+    const addToCart = async (itemId, size) => {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+      if (isAuthenticated) {
+        await fetch(`${server}/upload/addToCart`, {
+          method: "POST",
+          headers: {
+            Accept: "application/form-data",
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ itemId: itemId, size: size })
+        })
+      }
+    };
 
   const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));

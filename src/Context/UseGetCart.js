@@ -1,12 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { ShopContext } from './ShopContext';
 import { server } from '..';
-import CartItems from '../Components/CartItems/CartItems';
 
    function UseGetCart() {
 
     const {
-        setCartItems,authToken,
+        setCartItems,authToken, cartItmes
       } = useContext(ShopContext);
 
 
@@ -23,11 +22,10 @@ import CartItems from '../Components/CartItems/CartItems';
       })
         .then((resp) => resp.json())
         .then((data) => setCartItems(data?.data))
-        console.log(CartItems)
-
     }, []);
 
-    return CartItems
+    return cartItmes
+
 }
 
 

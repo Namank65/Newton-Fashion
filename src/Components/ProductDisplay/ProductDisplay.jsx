@@ -4,12 +4,13 @@ import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 import toast, { Toaster } from "react-hot-toast";
+import { UseGetCart } from "../../Context/UseGetCart";
 
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
   const [size, setSize] = useState("")
-
+UseGetCart()
   const SelectSize = (prop) => {
     if (prop === "S"){
       setSize(prop)
