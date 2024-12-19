@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
 import { Toaster } from "react-hot-toast";
-import { UseGetCart } from "../../Context/UseGetCart";
-
 
 const CartItems = () => {
   const {
@@ -15,7 +13,6 @@ const CartItems = () => {
     checkoutHandler
   } = useContext(ShopContext);
   const [totalCartAmount, setTotalCartAmount] = useState(getTotalCartAmount());
-  UseGetCart()
   
   return (
     <div className="CartItems">

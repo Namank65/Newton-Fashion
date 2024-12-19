@@ -4,20 +4,23 @@ import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 import toast, { Toaster } from "react-hot-toast";
-import { UseGetCart } from "../../Context/UseGetCart";
 
 const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
-  const [size, setSize] = useState("")
-UseGetCart()
+  const [size, setSize] = useState("");
+  const [SizeBtn, setSizeBtn] = useState(false);
+
+
   const SelectSize = (prop) => {
     if (prop === "S"){
       setSize(prop)
+      setSizeBtn(true)
       toast.success("Product Size S Selected")
     }
     if(prop === "M"){
       setSize(prop)
+      setSizeBtn(true)
       toast.success("Product Size M Selected")
     }
     if(prop === "L"){
@@ -83,8 +86,8 @@ UseGetCart()
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <p onClick={() => SelectSize("S")}>S</p>
-            <p onClick={() => SelectSize("M")}>M</p>
+            <p style={{ background: SizeBtn ? "pink" : "white" }} onClick={() => SelectSize("S")}>S</p>
+            <p style={{ background: SizeBtn ? "pink" : "none" }} onClick={() => SelectSize("M")}>M</p>
             <p onClick={() => SelectSize("L")}>L</p>
             <p onClick={() => SelectSize("XL")}>XL</p>
             <p onClick={() => SelectSize("XXL")}>XXL</p>

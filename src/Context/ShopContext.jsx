@@ -3,7 +3,6 @@ import { context, server } from "..";
 import { getCookie } from "../utils/Cookie.utiles";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {UseGetCart} from "./UseGetCart"
 
 export const ShopContext = createContext(null);
 
@@ -24,29 +23,7 @@ const ShopContextProvider = (props) => {
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
 
-//   const getCart = () => {
-//     useEffect(() => {
-//       fetch(`${server}/upload/getCart`, {
-//         method: "POST",
-//         headers: {
-//           Accept: "application/form-data",
-//           Authorization: `Bearer ${authToken}`,
-//           "Content-Type": "application/json",
-//         },
-//         credentials: "include",
-//         body: "",
-//       })
-//         .then((resp) => resp.json())
-//         .then((data) => setCartItems(data?.data))
-//     }, []);
-
-// }
-
-  useEffect(() => {
-    fetch(`${server}/upload/allProducts`)
-      .then((resp) => resp.json())
-      .then((data) => setall_product(data?.data));
-
+  const getCart = () => {
     if (isAuthenticated) {
       fetch(`${server}/upload/getCart`, {
         method: "POST",
@@ -59,27 +36,36 @@ const ShopContextProvider = (props) => {
         body: "",
       })
         .then((resp) => resp.json())
-        .then((data) => setCartItems(data?.data))
-      }
-      const token = getCookie("authToken");
-      setAuthToken(token);
-    },[]);
+        .then((data) => setCartItems(data?.data));
+    }
+    const token = getCookie("authToken");
+    setAuthToken(token);
+  };
 
-    const addToCart = async (itemId, size) => {
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-      if (isAuthenticated) {
-        await fetch(`${server}/upload/addToCart`, {
-          method: "POST",
-          headers: {
-            Accept: "application/form-data",
-            Authorization: `Bearer ${authToken}`,
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({ itemId: itemId, size: size })
-        })
-      }
-    };
+  useEffect(() => {
+    fetch(`${server}/upload/allProducts`)
+      .then((resp) => resp.json())
+      .then((data) => setall_product(data?.data));
+
+    getCart();
+  }, []);
+
+  const addToCart = async (itemId, size) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (isAuthenticated) {
+      await fetch(`${server}/upload/addToCart`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ itemId: itemId, size: size }),
+      });
+      getCart();
+    }
+  };
 
   const removefromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
@@ -93,9 +79,10 @@ const ShopContextProvider = (props) => {
         },
         credentials: "include",
         body: JSON.stringify({ itemId: itemId }),
-      })
+      });
       toast.success("Item Removed From Cart");
     }
+    getCart();
   };
 
   const getTotalCartAmount = () => {
@@ -168,7 +155,7 @@ const ShopContextProvider = (props) => {
     getTotalCartAmount,
     all_product,
     setCartItems,
-    authToken, 
+    authToken,
     setAuthToken,
     cartItems,
     addToCart,
