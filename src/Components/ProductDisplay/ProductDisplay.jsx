@@ -9,39 +9,59 @@ const ProductDisplay = (props) => {
   const { product } = props;
   const { addToCart } = useContext(ShopContext);
   const [size, setSize] = useState("");
-  const [SizeBtn, setSizeBtn] = useState(false);
-
+  const [SizeBtnS, setSizeBtnS] = useState(false);
+  const [SizeBtnM, setSizeBtnM] = useState(false);
+  const [SizeBtnL, setSizeBtnL] = useState(false);
+  const [SizeBtnXL, setSizeBtnXL] = useState(false);
+  const [SizeBtnXXL, setSizeBtnXXL] = useState(false);
 
   const SelectSize = (prop) => {
-    if (prop === "S"){
-      setSize(prop)
-      setSizeBtn(true)
-      toast.success("Product Size S Selected")
+    if (prop === "S") {
+      setSize(prop);
+      setSizeBtnS(true);
+      toast.success("Product Size S Selected");
+    } else {
+      setSizeBtnS(false);
     }
-    if(prop === "M"){
-      setSize(prop)
-      setSizeBtn(true)
-      toast.success("Product Size M Selected")
+
+    if (prop === "M") {
+      setSize(prop);
+      setSizeBtnM(true);
+      toast.success("Product Size M Selected");
+    } else {
+      setSizeBtnM(false);
     }
-    if(prop === "L"){
-      setSize(prop)
-      toast.success("Product Size L Selected")
+
+    if (prop === "L") {
+      setSize(prop);
+      setSizeBtnL(true);
+      toast.success("Product Size L Selected");
+    } else {
+      setSizeBtnL(false);
     }
-    if(prop === "XL"){
-      setSize(prop)
-      toast.success("Product Size XL Selected")
+
+    if (prop === "XL") {
+      setSize(prop);
+      setSizeBtnXL(true);
+      toast.success("Product Size XL Selected");
+    } else {
+      setSizeBtnXL(false);
     }
-    if(prop === "XXL"){
-      setSize(prop)
-      toast.success("Product Size XXL Selected")
+
+    if (prop === "XXL") {
+      setSize(prop);
+      setSizeBtnXXL(true);
+      toast.success("Product Size XXL Selected");
+    } else {
+      setSizeBtnXXL(false);
     }
-  }
+  };
   const AddToCart = () => {
     if (size) {
       addToCart(product?.id, size);
-      toast.success("Item Added To Cart")
-    } else toast.error("Please Select Item Size First")
-  }
+      toast.success("Item Added To Cart");
+    } else toast.error("Please Select Item Size First");
+  };
 
   return (
     <div className="ProductDisplay">
@@ -86,16 +106,56 @@ const ProductDisplay = (props) => {
         <div className="ProductDisplay-right-size">
           <h1>Select Size</h1>
           <div className="ProductDisplay-right-sizes">
-            <p style={{ background: SizeBtn ? "pink" : "white" }} onClick={() => SelectSize("S")}>S</p>
-            <p style={{ background: SizeBtn ? "pink" : "none" }} onClick={() => SelectSize("M")}>M</p>
-            <p onClick={() => SelectSize("L")}>L</p>
-            <p onClick={() => SelectSize("XL")}>XL</p>
-            <p onClick={() => SelectSize("XXL")}>XXL</p>
+            <p
+              style={{
+                background: SizeBtnS ? "#ff4141" : "",
+                color: SizeBtnS ? "white" : "",
+              }}
+              onClick={() => SelectSize("S")}
+            >
+              S
+            </p>
+            <p
+              style={{
+                background: SizeBtnM ? "#ff4141" : "",
+                color: SizeBtnM ? "white" : "",
+              }}
+              onClick={() => SelectSize("M")}
+            >
+              M
+            </p>
+            <p
+              style={{
+                background: SizeBtnL ? "#ff4141" : "",
+                color: SizeBtnL ? "white" : "",
+              }}
+              onClick={() => SelectSize("L")}
+            >
+              L
+            </p>
+            <p
+              style={{
+                background: SizeBtnXL ? "#ff4141" : "",
+                color: SizeBtnXL ? "white" : "",
+              }}
+              onClick={() => SelectSize("XL")}
+            >
+              XL
+            </p>
+            <p
+              style={{
+                background: SizeBtnXXL ? "#ff4141" : "",
+                color: SizeBtnXXL ? "white" : "",
+              }}
+              onClick={() => SelectSize("XXL")}
+            >
+              XXL
+            </p>
           </div>
         </div>
         <button
           onClick={() => {
-            AddToCart()
+            AddToCart();
           }}
         >
           Add To Cart
@@ -107,7 +167,7 @@ const ProductDisplay = (props) => {
           <span>Tags :</span>Modern, Latest
         </p>
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };

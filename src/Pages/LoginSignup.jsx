@@ -31,6 +31,8 @@ const LoginSignup = () => {
           withCredentials: true,
         }
       );
+      console.log(data?.data?.user?.role);
+      
       toast.success(data.message);
       setIsAuthenticated(true);
       
