@@ -29,6 +29,7 @@ const Navbar = () => {
   };
 
   if (!isAuthenticated ) return <Navigate to={"/"} />;
+  console.log(isAdmin)
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -113,7 +114,7 @@ const Navbar = () => {
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
 
-      {isAdmin ? <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
+      {!isAdmin ? <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
         Ai
       </button>
       </Link> : <Link to={"https://www.google.com"}><button id="ai-Btn"  className="aiBtn">

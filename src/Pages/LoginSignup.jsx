@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import "./CSS/LoginSignup.css";
 import { context, server } from "../index.js";
 import { Navigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const LoginSignup = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isAdmin, setIsAdmin } = useContext(context);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -31,7 +32,9 @@ const LoginSignup = () => {
           withCredentials: true,
         }
       );
-      console.log(data?.data?.user?.role);
+
+        if(data?.data?.user?.role === "Admin") setIsAdmin(true)
+        console.log(data?.data?.user?.role);
       
       toast.success(data.message);
       setIsAuthenticated(true);
@@ -41,6 +44,8 @@ const LoginSignup = () => {
       setIsAuthenticated(false);
     }
   };
+
+  // const calculate = useMemo(() => SubmitHandler(),[])
 
   if (isAuthenticated ) return <Navigate to={"/home"} />;
 
