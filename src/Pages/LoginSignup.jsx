@@ -31,10 +31,10 @@ const LoginSignup = () => {
           },
           withCredentials: true,
         }
-      );
-
-        if(data?.data?.user?.role === "Admin") setIsAdmin(true)
-        console.log(data?.data?.user?.role);
+      )
+      // .then(() => console.log(data?.data?.user?.role))
+        // if(data?.data?.user?.role === "Admin") setIsAdmin(true)
+        // setIsAdmin(data?.data?.user?.role);
       
       toast.success(data.message);
       setIsAuthenticated(true);
