@@ -6,12 +6,14 @@ import Browse from "./Components/Body/Browse";
 
 function App() {
   const {setUser, setIsAuthenticated} = useContext(context);
+  const { setIsAdmin } = useContext(context)
 
   useEffect(() => {
     
     axios.get(`${server}/users/profile`,{
       withCredentials: true
     }).then(res => {
+      setIsAdmin(res.data.data.user.role)
       setUser(res.data.user)
       setIsAuthenticated(true)
       toast.success("Welcome To Nubi Fashion")
@@ -19,6 +21,7 @@ function App() {
     }).catch((error) => {
       toast.error("Login First")
       setUser({})
+      setIsAdmin("")
       setIsAuthenticated(false)
     })
   

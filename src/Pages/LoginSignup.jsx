@@ -32,10 +32,6 @@ const LoginSignup = () => {
           withCredentials: true,
         }
       )
-      // .then(() => console.log(data?.data?.user?.role))
-        // if(data?.data?.user?.role === "Admin") setIsAdmin(true)
-        // setIsAdmin(data?.data?.user?.role);
-      
       toast.success(data.message);
       setIsAuthenticated(true);
       
@@ -44,8 +40,6 @@ const LoginSignup = () => {
       setIsAuthenticated(false);
     }
   };
-
-  // const calculate = useMemo(() => SubmitHandler(),[])
 
   if (isAuthenticated ) return <Navigate to={"/home"} />;
 

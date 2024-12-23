@@ -114,11 +114,11 @@ const Navbar = () => {
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
 
-      {isAdmin === "Admin" ? <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
-        Ai
-      </button>
-      </Link> : <Link to={"https://www.google.com"}><button id="ai-Btn"  className="aiBtn">
+      {isAdmin === "Admin" ? <Link to={"https://www.google.com/"}><button id="ai-Btn"  className="aiBtn">
         Admin
+      </button>
+      </Link> : <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
+        Ai
       </button>
       </Link>}
       
