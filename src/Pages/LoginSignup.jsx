@@ -9,12 +9,12 @@ import { ShopContext } from "../Context/ShopContext.jsx";
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getCart } = useContext(ShopContext);
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser, isAdmin, setIsAdmin } = useContext(context);
+  const { setUser, setIsAdmin } = useContext(context);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -34,8 +34,7 @@ const LoginSignup = () => {
           withCredentials: true,
         }
       )
-      console.log(getTotalCartItems())
-      toast.success(data.message);
+      getCart()
       setIsAuthenticated(true);
       
       axios.get(`${server}/users/profile`,{
@@ -44,8 +43,6 @@ const LoginSignup = () => {
         setIsAdmin(res.data.data.user.role)
         setUser(res.data.user)
         setIsAuthenticated(true)
-        getTotalCartItems()
-        console.log(getTotalCartItems())
         toast.success(`Welcome To Nubi Fashion ${res.data.data.user.userName}`)
         
       }).catch((error) => {

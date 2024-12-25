@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
   Route,
   RouterProvider,
@@ -15,13 +15,14 @@ import Shop from "../../Pages/Shop";
 import AiComp from "../AiComponent/AiComp";
 import Product from "../../Pages/Product";
 import PaymentSuccess from "../PaymentSuccess/PaymentSuccess";
-
+import Loader from "../Loader/Loader";
 
 const Browse = () => {
 
   const AppRoute = createBrowserRouter(
     createRoutesFromElements(
       <>
+      {/* <Suspense fallback={<Loader/>}> */}
         <Route path="/" element={<LoginSignup />} />
         <Route path="home" element={<Shop />} />
         <Route
@@ -44,6 +45,7 @@ const Browse = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="ai" element={<AiComp />} />
         <Route path="paymentsuccess" element={<PaymentSuccess />} />
+        {/* </Suspense> */}
       </>
     )
   );

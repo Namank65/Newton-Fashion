@@ -14,8 +14,6 @@ function App() {
       withCredentials: true
     }).then(res => {
       setIsAdmin(res.data.data.user.role)
-      console.log(res.data.data.user.userName);
-      
       setUser(res.data.user)
       setIsAuthenticated(true)
       toast.success(`Welcome To Nubi Fashion ${res.data.data.user.userName}`)

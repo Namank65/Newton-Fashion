@@ -13,7 +13,7 @@ const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
   const { isAuthenticated, setIsAuthenticated } = useContext(context);
-  const { isAdmin, setIsAdmin } = useContext(context);
+  const { isAdmin } = useContext(context);
 
   const menuRef = useRef();
 
@@ -28,8 +28,7 @@ const Navbar = () => {
     }
   };
 
-  if (!isAuthenticated ) return <Navigate to={"/"} />;
-  console.log(isAdmin)
+  if (!isAuthenticated) return <Navigate to={"/"} />;
 
   const dropDownToggle = (e) => {
     menuRef.current.classList.toggle("nav-menu-visible");
@@ -114,14 +113,19 @@ const Navbar = () => {
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
 
-      {isAdmin === "Admin" ? <Link to={"https://www.google.com/"}><button id="ai-Btn"  className="aiBtn">
-        Admin
-      </button>
-      </Link> : <Link to={"/ai"}><button id="ai-Btn"  className="aiBtn">
-        Ai
-      </button>
-      </Link>}
-      
+      {isAdmin === "Admin" ? (
+        <Link to={"https://www.google.com/"}>
+          <button id="ai-Btn" className="aiBtn">
+            Admin
+          </button>
+        </Link>
+      ) : (
+        <Link to={"/ai"}>
+          <button id="ai-Btn" className="aiBtn">
+            Ai
+          </button>
+        </Link>
+      )}
     </div>
   );
 };
