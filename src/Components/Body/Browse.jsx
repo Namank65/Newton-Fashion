@@ -1,7 +1,9 @@
 import React, { Suspense } from "react";
 import {
   Route,
+  Router,
   RouterProvider,
+  Routes,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
@@ -19,10 +21,48 @@ import Loader from "../Loader/Loader";
 
 const Browse = () => {
 
-  const AppRoute = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-      {/* <Suspense fallback={<Loader/>}> */}
+  // const AppRoute = createBrowserRouter(
+  //   createRoutesFromElements(
+  //     <>
+  //       <Route path="/" element={<LoginSignup />} />
+  //       <Route path="home" element={<Shop />} />
+  //       <Route
+  //         path="mens"
+  //         element={<ShopCatogery category="Men" banner={men_banner} />}
+  //       />
+  //       <Route
+  //         path="womens"
+  //         element={<ShopCatogery category="Women" banner={women_banner} />}
+  //       />
+  //       <Route
+  //         path="kids"
+  //         element={<ShopCatogery category="Kid" banner={kid_banner} />}
+  //       />
+
+  //       <Route path="/product" element={<Product />}>
+  //         <Route path=":productId" element={<Product />} />
+  //       </Route>
+
+  //       <Route path="cart" element={<Cart />} />
+  //       <Route path="ai" element={<AiComp />} />
+  //       <Route path="paymentsuccess" element={<PaymentSuccess />} />
+  //     </>
+  //   )
+  // );
+
+
+
+
+
+
+
+
+
+
+  const AppRoute = () => {
+    return (
+      <Router>
+        <Routes>
         <Route path="/" element={<LoginSignup />} />
         <Route path="home" element={<Shop />} />
         <Route
@@ -45,16 +85,16 @@ const Browse = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="ai" element={<AiComp />} />
         <Route path="paymentsuccess" element={<PaymentSuccess />} />
-        {/* </Suspense> */}
-      </>
+        </Routes>
+      </Router>
     )
-  );
+  }
 
-  return (
-    <div>
-      <RouterProvider router={AppRoute} />
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <RouterProvider router={AppRoute} />
+  //   </div>
+  // );
 };
 
 export default Browse;
