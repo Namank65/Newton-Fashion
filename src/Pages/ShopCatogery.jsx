@@ -3,14 +3,11 @@ import "./CSS/ShopCatogery.css";
 import { ShopContext } from "../Context/ShopContext";
 import drop_down from "../Components/Assets/dropdown_icon.png";
 import Items from "../Components/Items/Items";
-import Navbar from "../Components/Navbar/Navbar";
-import Footer from "../Components/Footer/Footer";
 
 const ShopCatogery = (props) => {
   const { all_product } = useContext(ShopContext);
   return (
     <div className="shop-category">
-      <Navbar />
       <img className="shopCatogery-banner" src={props.banner} alt="banner" />
       <div className="shopCatogery-indexSort">
         <p>
@@ -39,7 +36,6 @@ const ShopCatogery = (props) => {
         })}
       </div>
       <div className="shopCategory-loadMore">Explore More</div>
-        <Footer />
     </div>
   );
 };

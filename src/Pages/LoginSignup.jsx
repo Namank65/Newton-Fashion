@@ -66,7 +66,7 @@ const LoginSignup = () => {
 
   return (
     <div className="loginsignup">
-      <h1 className="loginHeading"> Welcome to Nubi Fashion</h1>
+      <h1 className="loginHeading"> Welcome to Nubî Fashîon</h1>
       <form onSubmit={SubmitHandler} className="loginsignup-container">
         <h1>{isRegistered ? "Login" : "Register"}</h1>
 
