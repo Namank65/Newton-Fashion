@@ -1,8 +1,10 @@
+import "./Loader.css"
+
 const Loader = () => {
   return (
-    <div>
-      {/* <h1>Loading</h1> */}
-      Loading...
+    <div className="loader">
+      <div className="nav"></div>
+      <div className="products"></div>
     </div>
   )
 }

@@ -1,19 +1,20 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginSignup from "../../Pages/LoginSignup";
-import ShopCatogery from "../../Pages/ShopCatogery";
+import { Toaster } from "react-hot-toast";
 import men_banner from "../Assets/banner_mens.png";
 import women_banner from "../Assets/banner_women.png";
 import kid_banner from "../Assets/banner_kids.png";
-import Shop from "../../Pages/Shop";
-import AiComp from "../AiComponent/AiComp";
-import Product from "../../Pages/Product";
-import PaymentSuccess from "../PaymentSuccess/PaymentSuccess";
-import Loader from "../Loader/Loader";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import { Toaster } from "react-hot-toast";
-import CartItems from "../CartItems/CartItems";
+
+const LoginSignup = lazy(() => import('../../Pages/LoginSignup'));
+const ShopCatogery = lazy(() => import('../../Pages/ShopCatogery'));
+const Shop = lazy(() => import('../../Pages/Shop'));
+const AiComp = lazy(() => import('../AiComponent/AiComp'));
+const Product = lazy(() => import('../../Pages/Product'));
+const PaymentSuccess = lazy(() => import('../PaymentSuccess/PaymentSuccess'));
+const Loader = lazy(() => import('../Loader/Loader'));
+const Footer = lazy(() => import('../Footer/Footer'));
+const CartItems = lazy(() => import('../CartItems/CartItems'));
+const Navbar = lazy(() => import('../Navbar/Navbar'));
 
 const AppRoute = () => {
   return (
@@ -22,7 +23,7 @@ const AppRoute = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<LoginSignup />} />
-          <Route path="home" element={<Shop />} />
+          <Route path="home" element={<Loader/>} />
           <Route
             path="mens"
             element={<ShopCatogery category="Men" banner={men_banner} />}

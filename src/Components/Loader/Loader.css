@@ -1,0 +1,14 @@
+.loader{
+    height: 60vh;
+    width: 98w;
+}
+.nav{
+    background: red;
+    width: 100%;
+    height: 20%;
+}
+.products{
+    background: grey;
+    width: 30%;
+    height: 50%;
+}
