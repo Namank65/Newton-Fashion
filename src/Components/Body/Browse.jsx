@@ -20,7 +20,7 @@ const AppRoute = () => {
   return (
     <Router>
       <Suspense fallback={<Loader />}>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<LoginSignup />} />
           <Route path="home" element={<Loader/>} />
@@ -45,7 +45,7 @@ const AppRoute = () => {
           <Route path="ai" element={<AiComp />} />
           <Route path="paymentsuccess" element={<PaymentSuccess />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Suspense>
       <Toaster />
     </Router>
