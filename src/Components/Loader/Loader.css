@@ -19,4 +19,23 @@
     margin: 2rem;
 }
 
-/* @media  */
+@media(max-width:500px) {
+    .nav{
+        grid-column-start: 1 ;
+        grid-column-end: 3;
+        height: 80px;
+        background: rgb(182, 180, 180);
+    }
+    .nav-products{
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, -1fr);
+    }
+    .products{
+        background: rgb(182, 180, 180);
+        border-radius: 4px;
+        margin: 1rem;
+    }
+}
