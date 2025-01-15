@@ -124,6 +124,7 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
+    // console.log(cartItems)
 
     const options = {
       key,

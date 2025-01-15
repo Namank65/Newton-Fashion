@@ -119,6 +119,7 @@ const Navbar = () => {
             Admin
           </button>
         </Link>
+        
       ) : (
         <Link to={"/ai"}>
           <button id="ai-Btn" className="aiBtn">
