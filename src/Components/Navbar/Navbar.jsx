@@ -114,11 +114,18 @@ const Navbar = () => {
       </div>
 
       {isAdmin === "Admin" ? (
+        <div >
         <Link to={"https://67704648b0b774e85c820556--nubifashionadmin.netlify.app/"}>
           <button id="ai-Btn" className="aiBtn">
             Admin
           </button>
         </Link>
+        <Link to={"/ai"}>
+          <button style={{marginLeft: "5px", background: "blue"}} id="ai-Btn" className="aiBtn">
+            Ai
+          </button>
+        </Link>
+        </div>
         
       ) : (
         <Link to={"/ai"}>
