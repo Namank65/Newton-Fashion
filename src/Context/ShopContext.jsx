@@ -125,6 +125,7 @@ const ShopContextProvider = (props) => {
       }
     );
     console.log(cartItems)
+    // will continue from here
 
     const options = {
       key,
