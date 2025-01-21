@@ -124,8 +124,14 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
-    console.log(cartItems)
-    // will continue from here
+
+    // if(cartItems) cartItems?.map((e) => (console.log("something"))) 
+
+    // for (let index = 0; index < cartItems.length; index++) {
+    //   const element = cartItems[index];
+    //   console.log(element)
+      
+    // }
 
     const options = {
       key,
@@ -161,7 +167,7 @@ const ShopContextProvider = (props) => {
     addToCart,
     removefromCart,
     checkoutHandler,
-    getCart
+    getCart,
   };
 
   return (

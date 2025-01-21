@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
@@ -9,22 +9,25 @@ const CartItems = () => {
     all_product,
     cartItems,
     removefromCart,
-    checkoutHandler
+    checkoutHandler,
   } = useContext(ShopContext);
-  const [totalCartAmount, setTotalCartAmount] = useState(getTotalCartAmount());
-  
+
   return (
     <div className="CartItems">
-      {getTotalCartAmount() > 0 ? <div className="cartItems-format-main">
-        <p>Products</p>
-        <p>Title</p>
-        <p>Price</p>
-        <p>Size</p>
-        <p>Quantity</p>
-        <p>Total</p>
-        <p>Remove</p>
-      </div> : <h1>Your Cart Is Empty!</h1> }
-      
+      {getTotalCartAmount() > 0 ? (
+        <div className="cartItems-format-main">
+          <p>Products</p>
+          <p>Title</p>
+          <p>Price</p>
+          <p>Size</p>
+          <p>Quantity</p>
+          <p>Total</p>
+          <p>Remove</p>
+        </div>
+      ) : (
+        <h1>Your Cart Is Empty!</h1>
+      )}
+
       <hr />
       {all_product?.map((e, index) => {
         if (cartItems[e.id].quantity > 0) {
@@ -80,7 +83,7 @@ const CartItems = () => {
           </div>
           <button
             onClick={() => {
-              checkoutHandler(totalCartAmount);
+              checkoutHandler(getTotalCartAmount());
             }}
           >
             PROCEED TO CHECKOUT
