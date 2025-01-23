@@ -14,7 +14,7 @@ const LoginSignup = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser, setIsAdmin } = useContext(context);
+  const { setUserDetail, setIsAdmin } = useContext(context);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -40,14 +40,14 @@ const LoginSignup = () => {
       axios.get(`${server}/users/profile`,{
         withCredentials: true
       }).then(res => {
+        // setUserDetail(res.data.data.user)
         setIsAdmin(res.data.data.user.role)
-        setUser(res.data.user)
         setIsAuthenticated(true)
         toast.success(`Welcome To Nubi Fashion ${res.data.data.user.userName}`)
         
       }).catch((error) => {
         toast.error("Login First")
-        setUser({})
+        // setUserDetail({})
         setIsAdmin("")
         setIsAuthenticated(false)
       })

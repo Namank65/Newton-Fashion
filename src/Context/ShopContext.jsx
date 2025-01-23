@@ -21,7 +21,7 @@ const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
-  const { isAuthenticated } = useContext(context);
+  const { isAuthenticated, user } = useContext(context);
 
   const getCart = () => {
     if (isAuthenticated) {
@@ -125,13 +125,8 @@ const ShopContextProvider = (props) => {
       }
     );
 
-    // if(cartItems) cartItems?.map((e) => (console.log("something"))) 
-
-    // for (let index = 0; index < cartItems.length; index++) {
-    //   const element = cartItems[index];
-    //   console.log(element)
-      
-    // }
+    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
+    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
 
     const options = {
       key,

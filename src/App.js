@@ -5,22 +5,22 @@ import { context, server } from '.';
 import Browse from "./Components/Body/Browse";
 
 function App() {
-  const {setUser, setIsAuthenticated} = useContext(context);
-  const { setIsAdmin } = useContext(context)
+  const {userDetail, setUserDetail, setIsAuthenticated ,isAdmin, setIsAdmin} = useContext(context);
 
   useEffect(() => {
     
     axios.get(`${server}/users/profile`,{
       withCredentials: true
     }).then(res => {
-      setIsAdmin(res.data.data.user.role)
-      setUser(res.data.user)
+      setUserDetail("hi")
+      setIsAdmin(res?.data?.data?.user?.role)
       setIsAuthenticated(true)
       toast.success(`Welcome To Nubi Fashion ${res.data.data.user.userName}`)
+      console.log(res)
       
     }).catch((error) => {
       toast.error("Login First")
-      setUser({})
+      // setUserDetail({})
       setIsAdmin("")
       setIsAuthenticated(false)
     })
