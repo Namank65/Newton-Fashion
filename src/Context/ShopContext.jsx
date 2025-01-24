@@ -21,7 +21,8 @@ const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
-  const { isAuthenticated, user } = useContext(context);
+  const { userDetail, isAuthenticated } = useContext(context);
+  const [userData, setUserData] = useState("");
 
   const getCart = () => {
     if (isAuthenticated) {
@@ -42,13 +43,23 @@ const ShopContextProvider = (props) => {
     setAuthToken(token);
   };
 
+  const userDetails = () => {
+    axios
+      .get(`${server}/users/profile`, {
+        withCredentials: true,
+      })
+      .then((res) => setUserData(res?.data?.data?.user));
+  };
+
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
 
     getCart();
+    userDetails();
   }, []);
+  console.log(userData);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

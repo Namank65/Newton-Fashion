@@ -8,19 +8,19 @@ import { ShopContext } from "../Context/ShopContext.jsx";
 
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
-  const { isAuthenticated, setIsAuthenticated } = useContext(context);
+  const { isAuthenticated, setIsAuthenticated, setUserDetail, setIsAdmin } =
+    useContext(context);
   const { getCart } = useContext(ShopContext);
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUserDetail, setIsAdmin } = useContext(context);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         `${server}/users/${isRegistered ? "login" : "register"}`,
         {
           userName,
@@ -33,32 +33,36 @@ const LoginSignup = () => {
           },
           withCredentials: true,
         }
-      )
-      getCart()
+      );
+      getCart();
       setIsAuthenticated(true);
-      
-      axios.get(`${server}/users/profile`,{
-        withCredentials: true
-      }).then(res => {
-        // setUserDetail(res.data.data.user)
-        setIsAdmin(res.data.data.user.role)
-        setIsAuthenticated(true)
-        toast.success(`Welcome To Nubi Fashion ${res.data.data.user.userName}`)
-        
-      }).catch((error) => {
-        toast.error("Login First")
-        // setUserDetail({})
-        setIsAdmin("")
-        setIsAuthenticated(false)
-      })
-      
+
+      axios
+        .get(`${server}/users/profile`, {
+          withCredentials: true,
+        })
+        .then(
+          (res) => (
+            setIsAdmin(res?.data?.data?.user?.role),
+            setIsAuthenticated(true),
+            toast.success(
+              `Welcome To Nubi Fashion ${res?.data?.data?.user?.userName}`
+            )
+          )
+        )
+        .catch((error) => {
+          toast.error("Login First");
+          setUserDetail({});
+          setIsAdmin("");
+          setIsAuthenticated(false);
+        });
     } catch (error) {
       toast.error("Invalid User Credintials");
       setIsAuthenticated(false);
     }
   };
 
-  if (isAuthenticated ) return <Navigate to={"/home"} />;
+  if (isAuthenticated) return <Navigate to={"/home"} />;
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
@@ -104,7 +108,7 @@ const LoginSignup = () => {
           <p>By Continuing, I Agree To The Terms Of Use & Privacy Policy.</p>
         </div>
       </form>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
