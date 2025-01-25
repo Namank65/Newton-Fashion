@@ -59,7 +59,7 @@ const ShopContextProvider = (props) => {
     getCart();
     userDetails();
   }, []);
-  console.log(userData);
+  // console.log(userData);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -138,6 +138,7 @@ const ShopContextProvider = (props) => {
 
     // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
     // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
+    // will continue from here...
 
     const options = {
       key,
