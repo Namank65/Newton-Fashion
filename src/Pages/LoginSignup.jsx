@@ -8,8 +8,7 @@ import { ShopContext } from "../Context/ShopContext.jsx";
 
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
-  const { isAuthenticated, setIsAuthenticated, setUserDetail, setIsAdmin } =
-    useContext(context);
+  const { isAuthenticated, setIsAuthenticated, setIsAdmin } = useContext(context);
   const { getCart } = useContext(ShopContext);
 
   const [userName, setUserName] = useState("");
@@ -52,7 +51,6 @@ const LoginSignup = () => {
         )
         .catch((error) => {
           toast.error("Login First");
-          setUserDetail({});
           setIsAdmin("");
           setIsAuthenticated(false);
         });

@@ -1,0 +1,20 @@
+/* Centering the loader in the container */
+.loading-circle {
+    width: 50px; /* Adjust the size of the circle */
+    height: 50px;
+    border: 6px solid #f3f3f3; /* Light grey border */
+    border-top: 6px solid #3498db; /* Blue border */
+    border-radius: 50%; /* Make it circular */
+    animation: spin 1s linear infinite; /* Spin animation */
+  }
+  
+  /* Keyframes for spinning animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    100% {
+      transform: rotate(360deg); /* Complete a full rotation */
+    }
+  }
+  
