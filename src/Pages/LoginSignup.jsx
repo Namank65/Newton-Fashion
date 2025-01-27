@@ -3,20 +3,28 @@ import "./CSS/LoginSignup.css";
 import { context, server } from "../index.js";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { ShopContext } from "../Context/ShopContext.jsx";
+import LoadingCircle from "../Components/Loader/LoadingCircle.jsx";
 
 const LoginSignup = () => {
   const [isRegistered, setIsRegistered] = useState(true);
-  const { isAuthenticated, setIsAuthenticated, setIsAdmin } = useContext(context);
+  const { isAuthenticated, setIsAuthenticated, setIsAdmin } =
+    useContext(context);
   const { getCart } = useContext(ShopContext);
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loaderCircle, setLoaderCircle] = useState(false);
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
+
+    if (!email && !password) {
+      return toast.error("Email And Password Required");
+    }
+    setLoaderCircle(true);
 
     try {
       await axios.post(
@@ -57,6 +65,7 @@ const LoginSignup = () => {
     } catch (error) {
       toast.error("Invalid User Credintials");
       setIsAuthenticated(false);
+      setLoaderCircle(false);
     }
   };
 
@@ -95,6 +104,7 @@ const LoginSignup = () => {
           />
         </div>
         <button>Continue</button>
+        {loaderCircle ? <LoadingCircle /> : ""}
         <p className="loginsignup-login">
           {isRegistered ? "New To Nubi Fashion? " : "Already Have An Account? "}
           <span onClick={RegisterHandelClick}>
@@ -102,11 +112,10 @@ const LoginSignup = () => {
           </span>
         </p>
         <div className="loginsignup-agree">
-          <input type="checkbox" name="" id="" />
-          <p>By Continuing, I Agree To The Terms Of Use & Privacy Policy.</p>
+          <p>Don't want to signUp? use these demo Credentials.</p>
+          <p>UserName- <span>demo003</span>  Password- <span>Demo003@</span></p>
         </div>
       </form>
-      <Toaster />
     </div>
   );
 };

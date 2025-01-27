@@ -1,14 +1,20 @@
-/* Centering the loader in the container */
+.circleMain{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 5%;
+}
+
 .loading-circle {
-    width: 50px; /* Adjust the size of the circle */
+    width: 50px;
     height: 50px;
-    border: 6px solid #f3f3f3; /* Light grey border */
-    border-top: 6px solid #3498db; /* Blue border */
-    border-radius: 50%; /* Make it circular */
-    animation: spin 1s linear infinite; /* Spin animation */
+    border: 6px solid #f3f3f3; 
+    border-top: 6px solid #3498db; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
   }
   
-  /* Keyframes for spinning animation */
   @keyframes spin {
     0% {
       transform: rotate(0deg); /* Start at 0 degrees */

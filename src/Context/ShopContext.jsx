@@ -43,21 +43,21 @@ const ShopContextProvider = (props) => {
     setAuthToken(token);
   };
 
-  const userDetails = () => {
-    axios
-      .get(`${server}/users/profile`, {
-        withCredentials: true,
-      })
-      .then((res) => setUserData(res?.data?.data?.user));
-  };
+  // const userDetails = () => {
+  //   axios
+  //     .get(`${server}/users/profile`, {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => setUserData(res?.data?.data?.user));
+  // };
 
   useEffect(() => {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
 
-    getCart();
-    userDetails();
+    // getCart();
+    // userDetails();
   }, []);
   // console.log(userData);
 
