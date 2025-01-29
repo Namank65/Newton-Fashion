@@ -121,9 +121,7 @@ const ShopContextProvider = (props) => {
 
   const checkoutHandler = async (amount) => {
     if (amount === 0) return toast.error("Please Add Items To The Cart First");
-    const {
-      data: { key },
-    } = await axios(`${server}/payment/getRazorKey`);
+    const {data: { key }} = await axios.get(`${server}/payment/getRazorKey`);
 
     const { data } = await axios.post(
       `${server}/payment/checkout`,
@@ -135,24 +133,23 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
+    console.log(data?.data?.id)
 
-    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
-    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(cartItems[e.id].productSize) : "")
-    // will continue from here...
+    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(e, cartItems[e.id]) : "")
 
     const options = {
       key,
-      amount,
+      amount: data.amount,
       currency: "INR",
-      name: "Souamya",
+      name: "Nubi Fashion Corporate Office",
       description: "Test Transaction",
       image: "https://avatars.githubusercontent.com/u/127884520?v=4",
       order_id: data?.data?.id,
       callback_url: `${server}/payment/paymentVerification`,
       prefill: {
-        name: "Souamya",
+        name: "Nubi Fashion Corporate Office",
         email: "souamyadev@gmail.com",
-        contact: "6203982931",
+        contact: "6203982932",
       },
       notes: {
         address: "Nubi Fashion Corporate Office",
