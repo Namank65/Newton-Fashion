@@ -15,9 +15,9 @@ function App() {
       })
       .then((res) => {
         setIsAdmin(res.data.data.user.role);
-        setIsAuthenticated(true);
         getCart()
         toast.success(`Welcome Back ${res.data.data.user.userName}`);
+        setIsAuthenticated(true);
       })
       .catch((error) => {
         toast.error("Login First");

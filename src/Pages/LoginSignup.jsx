@@ -44,7 +44,7 @@ const LoginSignup = () => {
       getCart();
       setIsAuthenticated(true);
 
-      axios
+      await axios
         .get(`${server}/users/profile`, {
           withCredentials: true,
         })
@@ -69,7 +69,7 @@ const LoginSignup = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/home"} />;
+  if (isAuthenticated) return <Navigate to={"/home"} />
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);

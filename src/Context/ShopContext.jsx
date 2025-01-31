@@ -21,12 +21,12 @@ const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
-  const { userDetail, isAuthenticated } = useContext(context);
+  const { isAuthenticated } = useContext(context);
   const [userData, setUserData] = useState("");
 
-  const getCart = () => {
+  const getCart = async() => {
     if (isAuthenticated) {
-      fetch(`${server}/upload/getCart`, {
+     await fetch(`${server}/upload/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -52,9 +52,11 @@ const ShopContextProvider = (props) => {
   // };
 
   useEffect(() => {
+    if (isAuthenticated) {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
+    }
 
     // getCart();
     // userDetails();
@@ -121,8 +123,10 @@ const ShopContextProvider = (props) => {
 
   const checkoutHandler = async (amount) => {
     if (amount === 0) return toast.error("Please Add Items To The Cart First");
-    const {data: { key }} = await axios.get(`${server}/payment/getRazorKey`);
-
+    // const {data1} = await axios.get(`${server}/payment/getRazorKey`).then((res) => console.log(res.data.data.key))
+    // if(!data1) console.log("Key is not created");
+    
+    
     const { data } = await axios.post(
       `${server}/payment/checkout`,
       { amount },
@@ -133,13 +137,13 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
-    console.log(data?.data?.id)
-
+    
+    // console.log(data.data.amount)
     // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(e, cartItems[e.id]) : "")
 
     const options = {
-      key,
-      amount: data.amount,
+      key: "rzp_test_p7ZtrzaH8Z0wVw",
+      amount: data?.data?.amount,
       currency: "INR",
       name: "Nubi Fashion Corporate Office",
       description: "Test Transaction",
@@ -149,7 +153,7 @@ const ShopContextProvider = (props) => {
       prefill: {
         name: "Nubi Fashion Corporate Office",
         email: "souamyadev@gmail.com",
-        contact: "6203982932",
+        contact: "6203982931",
       },
       notes: {
         address: "Nubi Fashion Corporate Office",
