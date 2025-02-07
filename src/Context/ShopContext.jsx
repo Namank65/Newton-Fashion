@@ -22,7 +22,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState();
 
   const getCart = async() => {
     if (isAuthenticated) {
@@ -43,25 +43,24 @@ const ShopContextProvider = (props) => {
     setAuthToken(token);
   };
 
-  // const userDetails = () => {
-  //   axios
-  //     .get(`${server}/users/profile`, {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => setUserData(res?.data?.data?.user));
-  // };
+  const userDetails = () => {
+    axios
+      .get(`${server}/users/profile`, {
+        withCredentials: true,
+      })
+      .then((res) => setUserData(res?.data?.data?.user?.cartData));
+  };
 
   useEffect(() => {
-    if (isAuthenticated) {
     fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
-    }
 
     // getCart();
-    // userDetails();
+    userDetails();
   }, []);
   // console.log(userData);
+  // console.log(cartItems);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -97,6 +96,42 @@ const ShopContextProvider = (props) => {
     }
     getCart();
   };
+  
+  const addQuantity = async (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId].quantity + 1 }));
+    if (isAuthenticated) {
+      await fetch(`${server}/upload/addQuantity`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ itemId: itemId }),
+      });
+      toast.success("Item Quantity Changed Successfully");
+    }
+    getCart();
+  };
+
+  const removeQuantity = async (itemId) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId].quantity - 1 }));
+    if (isAuthenticated) {
+      await fetch(`${server}/upload/removeQuantity`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ itemId: itemId }),
+      });
+      toast.success("Item Quantity Changed Successfully");
+    }
+    getCart();
+  };
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -120,12 +155,10 @@ const ShopContextProvider = (props) => {
     }
     return totalItem;
   };
-
+  
   const checkoutHandler = async (amount) => {
     if (amount === 0) return toast.error("Please Add Items To The Cart First");
-    // const {data1} = await axios.get(`${server}/payment/getRazorKey`).then((res) => console.log(res.data.data.key))
-    // if(!data1) console.log("Key is not created");
-    
+    // const {data1} = await axios.get(`${server}/payment/getRazorKey`)
     
     const { data } = await axios.post(
       `${server}/payment/checkout`,
@@ -137,8 +170,6 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
-    
-    // console.log(data.data.amount)
     // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(e, cartItems[e.id]) : "")
 
     const options = {
@@ -162,6 +193,7 @@ const ShopContextProvider = (props) => {
         color: "#3399cc",
       },
     };
+    
     const razor = new window.Razorpay(options);
     razor.open();
   };
@@ -176,6 +208,8 @@ const ShopContextProvider = (props) => {
     removefromCart,
     checkoutHandler,
     getCart,
+    addQuantity,
+    removeQuantity
   };
 
   return (

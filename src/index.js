@@ -12,7 +12,7 @@ export const context = createContext({isAuthenticated: true, isAdmin: false});
 
 const AppWrapper = () => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [isAdmin, setIsAdmin] = useState("");
   const [userDetail, setUserDetail] = useState({});
 

@@ -10,6 +10,8 @@ const CartItems = () => {
     cartItems,
     removefromCart,
     checkoutHandler,
+    addQuantity,
+    removeQuantity
   } = useContext(ShopContext);
 
   return (
@@ -42,8 +44,14 @@ const CartItems = () => {
                 <p>{e.name}</p>
                 <p>₹{e.newPrice}</p>
                 <p>{cartItems[e.id].productSize}</p>
+                <button disabled={cartItems[e.id].quantity === 1} onClick={() => removeQuantity(e.id)} className="cartItems-quantity">
+                  -
+                </button>
                 <button className="cartItems-quantity">
                   {cartItems[e.id].quantity}
+                </button>
+                <button disabled={cartItems[e.id].quantity === 5} onClick={() => addQuantity(e.id)} className="cartItems-quantity">
+                  +
                 </button>
                 <p>₹{e.newPrice * cartItems[e.id].quantity}</p>
                 <img

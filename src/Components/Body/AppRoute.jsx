@@ -43,7 +43,7 @@ const AppRoute = () => {
 
           <Route path="cart" element={<CartItems />} />
           <Route path="ai" element={<AiComp />} />
-          <Route path="paymentsuccess" element={<PaymentSuccess />} />
+          <Route path="/paymentsuccess" element={<PaymentSuccess />} />
         </Routes>
         <Footer />
       </Suspense>

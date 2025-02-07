@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const menuRef = useRef();
 
-  const logoOutHandler = async () => {
+  const logOutHandler = async () => {
     try {
       await axios.get(`${server}/users/logout`, { withCredentials: true });
       toast.success("Logged Out Successfully");
@@ -99,7 +99,7 @@ const Navbar = () => {
 
       <div className="nav-login-cart">
         {isAuthenticated ? (
-          <button onClick={logoOutHandler}>logout</button>
+          <button onClick={logOutHandler}>logout</button>
         ) : (
           <Link to={"/"}>
             <button>Login</button>
