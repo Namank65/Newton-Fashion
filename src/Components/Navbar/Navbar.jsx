@@ -12,8 +12,7 @@ import axios from "axios";
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
-  const { isAuthenticated, setIsAuthenticated } = useContext(context);
-  const { isAdmin } = useContext(context);
+  const { isAuthenticated, setIsAuthenticated, isAdmin } = useContext(context);
 
   const menuRef = useRef();
 

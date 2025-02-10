@@ -44,15 +44,17 @@ const CartItems = () => {
                 <p>{e.name}</p>
                 <p>₹{e.newPrice}</p>
                 <p>{cartItems[e.id].productSize}</p>
-                <button disabled={cartItems[e.id].quantity === 1} onClick={() => removeQuantity(e.id)} className="cartItems-quantity">
+                <div className="quantitySection">
+                <button disabled={cartItems[e.id].quantity === 1} onClick={() => removeQuantity(e.id)} className="QuantityBtn">
                   -
                 </button>
                 <button className="cartItems-quantity">
                   {cartItems[e.id].quantity}
                 </button>
-                <button disabled={cartItems[e.id].quantity === 5} onClick={() => addQuantity(e.id)} className="cartItems-quantity">
+                <button disabled={cartItems[e.id].quantity === 5} onClick={() => addQuantity(e.id)} className="QuantityBtn">
                   +
                 </button>
+                </div>
                 <p>₹{e.newPrice * cartItems[e.id].quantity}</p>
                 <img
                   className="cartItems-remove-icon"

@@ -10,7 +10,7 @@
 
 .cartItems-format-main {
   display: grid;
-  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 1fr 0.5fr 0.5fr;
   align-items: center;
   gap: 4px;
   padding: 20px 0px;
@@ -37,8 +37,18 @@
 .cartItems-quantity {
   width: 64px;
   height: 50px;
+  gap: 0px;
   border: 2px solid #ebebeb;
   background: #fff;
+}
+.quantitySection{
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.QuantityBtn{
+  width: 30px;
+  /* margin-right: 0px; */
 }
 
 .cartItems-down {

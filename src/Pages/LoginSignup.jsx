@@ -27,27 +27,21 @@ const LoginSignup = () => {
     setLoaderCircle(true);
 
     try {
-      await axios.post(
-        `${server}/users/${isRegistered ? "login" : "register"}`,
-        {
-          userName,
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      );
-      getCart();
-      setIsAuthenticated(true);
-
       await axios
-        .get(`${server}/users/profile`, {
-          withCredentials: true,
-        })
+        .post(
+          `${server}/users/${isRegistered ? "login" : "register"}`,
+          {
+            userName,
+            email,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
         .then(
           (res) => (
             setIsAdmin(res?.data?.data?.user?.role),
@@ -56,12 +50,8 @@ const LoginSignup = () => {
               `Welcome To Nubi Fashion ${res?.data?.data?.user?.userName}`
             )
           )
-        )
-        .catch((error) => {
-          toast.error("Login First");
-          setIsAdmin("");
-          setIsAuthenticated(false);
-        });
+        );
+      getCart();
     } catch (error) {
       toast.error("Invalid User Credintials");
       setIsAuthenticated(false);
@@ -69,7 +59,7 @@ const LoginSignup = () => {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/home"} />
+  if (isAuthenticated) return <Navigate to={"/home"} />;
 
   const RegisterHandelClick = () => {
     setIsRegistered(!isRegistered);
@@ -113,7 +103,9 @@ const LoginSignup = () => {
         </p>
         <div className="loginsignup-agree">
           <p>Don't want to signUp? use these demo Credentials.</p>
-          <p>UserName- <span>demo003</span>  Password- <span>Demo003@</span></p>
+          <p>
+            UserName- <span>demo003</span> Password- <span>Demo003@</span>
+          </p>
         </div>
       </form>
     </div>

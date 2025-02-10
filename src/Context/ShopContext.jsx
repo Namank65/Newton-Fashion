@@ -56,11 +56,9 @@ const ShopContextProvider = (props) => {
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
 
-    // getCart();
-    userDetails();
+    getCart();
+    // userDetails();
   }, []);
-  // console.log(userData);
-  // console.log(cartItems);
 
   const addToCart = async (itemId, size) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -98,11 +96,10 @@ const ShopContextProvider = (props) => {
   };
   
   const addQuantity = async (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId].quantity + 1 }));
     if (isAuthenticated) {
-      await fetch(`${server}/upload/addQuantity`, {
-        method: "POST",
-        headers: {
+        await fetch(`${server}/upload/addQuantity`, {
+          method: "POST",
+          headers: {
           Accept: "application/form-data",
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
@@ -116,7 +113,6 @@ const ShopContextProvider = (props) => {
   };
 
   const removeQuantity = async (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId].quantity - 1 }));
     if (isAuthenticated) {
       await fetch(`${server}/upload/removeQuantity`, {
         method: "POST",
@@ -157,9 +153,7 @@ const ShopContextProvider = (props) => {
   };
   
   const checkoutHandler = async (amount) => {
-    if (amount === 0) return toast.error("Please Add Items To The Cart First");
-    // const {data1} = await axios.get(`${server}/payment/getRazorKey`)
-    
+    if (amount === 0) return toast.error("Please Add Items To The Cart First");    
     const { data } = await axios.post(
       `${server}/payment/checkout`,
       { amount },
