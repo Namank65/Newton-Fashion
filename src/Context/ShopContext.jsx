@@ -22,11 +22,12 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
   const { isAuthenticated } = useContext(context);
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState("");
+  const [orderItems, setOrderItems] = useState([]);
 
-  const getCart = async() => {
+  const getCart = async () => {
     if (isAuthenticated) {
-     await fetch(`${server}/upload/getCart`, {
+      await fetch(`${server}/upload/getCart`, {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -43,12 +44,48 @@ const ShopContextProvider = (props) => {
     setAuthToken(token);
   };
 
+    useEffect(() => {
+      const newOrderItems = all_product
+      .filter((e) => cartItems[e.id].quantity > 0).map((e) => ({
+        name: e.name,
+        images: e.images || "defaultImage.png",
+        category: e.category || "Default Category",
+        newPrice: e.newPrice || 0,
+        oldPrice: e.oldPrice || 0,
+        available: e.available || "Yes",
+        size: e.size || "M",
+        stock: e.stock || "In Stock",
+        id: e.id
+      }))
+
+      setOrderItems(newOrderItems);
+    },[all_product, cartItems])
+
+    console.log(orderItems);
+
+    
+  const orders = async (itemId, size) => {
+      
+    if (isAuthenticated) {
+      await fetch(`${server}/order/newOrder`, {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ user: userData, orderItems: "newOrderItems" }),
+      });
+    }
+  };
+
   const userDetails = () => {
     axios
       .get(`${server}/users/profile`, {
         withCredentials: true,
       })
-      .then((res) => setUserData(res?.data?.data?.user?.cartData));
+      .then((res) => setUserData(res?.data?.data?.user._id));
   };
 
   useEffect(() => {
@@ -56,8 +93,7 @@ const ShopContextProvider = (props) => {
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
 
-    getCart();
-    // userDetails();
+    userDetails();
   }, []);
 
   const addToCart = async (itemId, size) => {
@@ -94,12 +130,12 @@ const ShopContextProvider = (props) => {
     }
     getCart();
   };
-  
+
   const addQuantity = async (itemId) => {
     if (isAuthenticated) {
-        await fetch(`${server}/upload/addQuantity`, {
-          method: "POST",
-          headers: {
+      await fetch(`${server}/upload/addQuantity`, {
+        method: "POST",
+        headers: {
           Accept: "application/form-data",
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
@@ -151,9 +187,9 @@ const ShopContextProvider = (props) => {
     }
     return totalItem;
   };
-  
+
   const checkoutHandler = async (amount) => {
-    if (amount === 0) return toast.error("Please Add Items To The Cart First");    
+    if (amount === 0) return toast.error("Please Add Items To The Cart First");
     const { data } = await axios.post(
       `${server}/payment/checkout`,
       { amount },
@@ -164,7 +200,6 @@ const ShopContextProvider = (props) => {
         withCredentials: true,
       }
     );
-    // all_product.map((e) => cartItems[e.id].quantity > 0 ? console.log(e, cartItems[e.id]) : "")
 
     const options = {
       key: "rzp_test_p7ZtrzaH8Z0wVw",
@@ -187,7 +222,7 @@ const ShopContextProvider = (props) => {
         color: "#3399cc",
       },
     };
-    
+
     const razor = new window.Razorpay(options);
     razor.open();
   };
@@ -203,7 +238,7 @@ const ShopContextProvider = (props) => {
     checkoutHandler,
     getCart,
     addQuantity,
-    removeQuantity
+    removeQuantity,
   };
 
   return (
