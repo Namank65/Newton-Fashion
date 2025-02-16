@@ -21,9 +21,9 @@ const ShopContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
   const [cartItems, setCartItems] = useState(GetDefaultCart());
   const [authToken, setAuthToken] = useState("");
-  const { isAuthenticated } = useContext(context);
   const [userData, setUserData] = useState("");
   const [orderItems, setOrderItems] = useState([]);
+  const { isAuthenticated } = useContext(context);
 
   const getCart = async () => {
     if (isAuthenticated) {
@@ -53,20 +53,18 @@ const ShopContextProvider = (props) => {
         newPrice: e.newPrice || 0,
         oldPrice: e.oldPrice || 0,
         available: e.available || "Yes",
-        size: e.size || "M",
+        size: cartItems[e.id].productSize || "M",
         stock: e.stock || "In Stock",
-        id: e.id
+        quantity: cartItems[e.id].quantity,
+        ProductId: e._id
       }))
 
       setOrderItems(newOrderItems);
-    },[all_product, cartItems])
+    },[cartItems])
 
-    console.log(orderItems);
-
-    
-  const orders = async (itemId, size) => {
+  const orders = async () => {
       
-    if (isAuthenticated) {
+    if (orderItems) {
       await fetch(`${server}/order/newOrder`, {
         method: "POST",
         headers: {
@@ -75,25 +73,28 @@ const ShopContextProvider = (props) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ user: userData, orderItems: "newOrderItems" }),
+        body: JSON.stringify({ user: userData, orderItems: orderItems }),
       });
     }
   };
 
   const userDetails = () => {
-    axios
+      axios
       .get(`${server}/users/profile`, {
         withCredentials: true,
       })
-      .then((res) => setUserData(res?.data?.data?.user._id));
+      .then((res) => setUserData(res?.data?.data?.user?._id));
   };
 
   useEffect(() => {
-    fetch(`${server}/upload/allProducts`)
+    if(isAuthenticated){
+      
+      fetch(`${server}/upload/allProducts`)
       .then((resp) => resp.json())
       .then((data) => setall_product(data?.data));
 
-    userDetails();
+      userDetails()
+    }
   }, []);
 
   const addToCart = async (itemId, size) => {
@@ -199,7 +200,7 @@ const ShopContextProvider = (props) => {
         },
         withCredentials: true,
       }
-    );
+    )
 
     const options = {
       key: "rzp_test_p7ZtrzaH8Z0wVw",
@@ -239,6 +240,7 @@ const ShopContextProvider = (props) => {
     getCart,
     addQuantity,
     removeQuantity,
+    orders
   };
 
   return (
